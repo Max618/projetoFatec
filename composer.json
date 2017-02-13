@@ -1,7 +1,7 @@
 {
     "name": "laravel/projetoFatec",
     "description": "Um projeto para as Fatecs.",
-    "keywords": ["framework", "laravel"],
+    "keywords": ["App", "laravel"],
     "license": "MIT",
     "type": "project",
     "require": {
