@@ -1,6 +1,6 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "laravel/projetoFatec",
+    "description": "Um projeto para as Fatecs.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
