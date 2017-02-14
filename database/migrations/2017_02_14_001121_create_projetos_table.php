@@ -17,9 +17,9 @@ class CreateProjetosTable extends Migration
             $table->increments('id');
             $table->string('name', 60);
             $table->string('descricao', 30);
-            $table->string('ambito', 4);
-            $table->string('categoria', 4);
-            $table->string('eixo', 4);
+            $table->integer('ambito_id');
+            $table->integer('categoria_id');
+            $table->integer('eixo_id');
             $table->text('cronograma');
             $table->text('comentarios_prof');
             $table->text('ancora');
