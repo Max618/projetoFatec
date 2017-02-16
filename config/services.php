@@ -42,9 +42,9 @@ return [
     ],
 
     'facebook' => [
-    'client_id' => 'your-github-app-id',
-    'client_secret' => 'your-github-app-secret',
-    'redirect' => 'http://your-callback-url',
+    'client_id' => '608399486012657',
+    'client_secret' => '5c45820f486cf49d8c4a3895fdade738',
+    'redirect' => 'http://localhost:8000/login-social/callback',
     ],
 
     'google' => [

@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::auth();
+
+Route::get('login-{provider}', 'Auth\RegisterController@redirectToProvider')->name('loginSocial');
+Route::get('login-{provider}/callback', 'Auth\RegisterController@handleProviderCallback');
+
+Route::get('/foi', function() {
+	return "foi";
+});
+
+Route::get('/home', 'HomeController@index');
