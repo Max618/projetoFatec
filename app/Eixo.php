@@ -6,5 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Eixo extends Model
 {
-    //
+    protected $fillable = [
+        'name', 'descricao',
+    ];
+
+    // 1 eixo - N projetos
+    public function projeto()
+    {
+        return $this->hasMany(Projeto::class);
+    }
+
+    // 1 eixo - 1 aviso
+    public function aviso()
+    {
+        return $this->hasOne(Aviso::class);
+    }
 }

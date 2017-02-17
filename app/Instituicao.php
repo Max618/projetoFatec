@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Instituicao extends Model
 {
-    //
+    protected $fillable = [
+        'name', 'email', 'telefone', 'logradouro', 'numero_log', 'complemento', 'cep', 'cidade', 'estado',
+    ];
+
+    // N - N
+    public function execucao()
+    {
+    	return $this->belongsToMany(Execucao::class, 'execucao_instituicao');
+    }
 }

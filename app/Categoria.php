@@ -6,5 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Categoria extends Model
 {
-    //
+    protected $fillable = [
+        'name', 'descricao',
+    ];
+
+    // 1 categoria - N projetos
+    public function projeto()
+    {
+        return $this->hasMany(Projeto::class);
+    }
+
+    // 1 categoria - 1 aviso
+    public function aviso()
+    {
+        return $this->hasOne(Aviso::class);
+    }
 }

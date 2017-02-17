@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Prof_aux extends Model
 {
-    //
+    protected $fillable = [
+        'name', 'email',
+    ];
 }

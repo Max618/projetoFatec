@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'telefone', 'logradouro', 'numero_log', 'complemento', 'cep', 'cidade', 'estado',
     ];
 
     /**
@@ -27,8 +27,22 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+    // 1 user - N social
     public function social()
     {
         return $this->hasMany(Social::class);
+    }
+
+    // 1 user - N aviso
+    public function aviso()
+    {
+        return $this->hasMany(Aviso::class);
+    }
+
+    // N - N
+    public function execucao()
+    {
+        return $this->belongsToMany(Execucao::class, 'execucao_user');
     }
 }

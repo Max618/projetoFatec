@@ -6,5 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Execucao extends Model
 {
-    //
+    protected $fillable = [
+        //
+    ];
+
+    // N - N
+    public function user()
+    {
+    	return $this->belongsToMany(User::class, 'execucao_user');
+    }
+
+    // N - N
+    public function projeto()
+    {
+    	return $this->belongsToMany(Projeto::class, 'execucao_projeto');
+    }
+
+    // N - N
+    public function instituicao()
+    {
+    	return $this->belongsToMany(Instituicao::class, 'execucao_instituicao');
+    }
 }
