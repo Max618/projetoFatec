@@ -28,6 +28,6 @@ class CrateExecucaoProjetoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('projeto_user');
+        Schema::dropIfExists('execucao_projeto');
     }
 }

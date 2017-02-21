@@ -11,6 +11,6 @@ class Social extends Model
 	// N social - 1 user
     public function user()
     {
-    	return $this->belongsTo(User::class);
+    	return $this->belongsTo('App\User');
     }
 }

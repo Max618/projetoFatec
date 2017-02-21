@@ -37,12 +37,12 @@
 
     <!-- Responsive classes -->
     <link href="/css/responsive.css" rel="stylesheet">
-
-    <!-- Laravel css-->
+    <!--
+    Laravel css
     <link href="/css/app.css" rel="stylesheet">
 
-    <!-- Laravel js-->
-    <script src="/js/app.js"></script>
+    Laravel js
+    <script src="/js/app.js"></script>-->
 
     <!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -706,6 +706,9 @@
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('home') }}">Home</a>
                                     </li>
                                 </ul>
                             </li>

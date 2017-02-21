@@ -14,6 +14,9 @@ Logado
                 <div class="panel-body">
                     You are logged in!
                 </div>
+                @if (session('socialUser'))
+                        <img src="{{ session('socialUser')->getAvatar() }}">
+                @endif
             </div>
         </div>
     </div>

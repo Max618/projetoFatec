@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Social;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Socialite;
+use Illuminate\Http\Request;
+
 class RegisterController extends Controller
 {
     /*
@@ -69,8 +72,11 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function redirectToProvider($provider)
+    public function redirectToProvider($provider = null)
     {
+        if(! config("services.$provider")){
+            abort('404');
+        }
         return Socialite::driver($provider)->redirect();
     }
 
@@ -79,15 +85,15 @@ class RegisterController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback($provider)
+    public function handleProviderCallback(Request $request, $provider)
     {
         try
         {
-            $socialUser = Socialite::driver($provider)->user();
+            $socialUser = Socialite::driver($provider)->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))->user();
         }
         catch(\Exception $e)
         {
-            return redirect('/');
+            return redirect('/')->with('status', $e);
         }
 
         $socialProvider = Social::where('provider_id', $socialUser->getId())->first();
@@ -96,19 +102,20 @@ class RegisterController extends Controller
             $user = User::firstOrCreate(
                 [
                 'email' => $socialUser->getEmail(),
-                'name' => $socialUser->getName()
+                'name' => $socialUser->getName(),
                 ]);
-            $user->socialProvider()->create(
+            $user->social()->create(
                 [
                 'provider_id' => $socialUser->getId(),
-                'provider' => $provider
+                'provider' => $provider,
                 ]);
         }
         else 
             $user = $socialProvider->user;
 
         auth()->login($user);
-
+        session(['socialUser' => $socialUser]);
+       // session()->generate('socialUser') = $socialUser->getAvatar();
         return redirect('/home');
     }
 }

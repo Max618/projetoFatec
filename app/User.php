@@ -31,7 +31,7 @@ class User extends Authenticatable
     // 1 user - N social
     public function social()
     {
-        return $this->hasMany(Social::class);
+        return $this->hasMany('App\Social');
     }
 
     // 1 user - N aviso

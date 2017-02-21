@@ -20,6 +20,6 @@ Auth::routes();
 Route::get('login-{provider}', 'Auth\RegisterController@redirectToProvider')->name('loginSocial');
 Route::get('login-{provider}/callback', 'Auth\RegisterController@handleProviderCallback');
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

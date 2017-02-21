@@ -42,9 +42,9 @@ return [
     ],
 
     'facebook' => [
-    'client_id' => '608399486012657',
-    'client_secret' => '5c45820f486cf49d8c4a3895fdade738',
-    'redirect' => 'http://localhost:8000/login-social/callback',
+    'client_id' => '161822934295460',
+    'client_secret' => 'c494a888b39511c2aa05d7a672971f29',
+    'redirect' => 'http://localhost:8000/login-facebook/callback',
     ],
 
     'google' => [
