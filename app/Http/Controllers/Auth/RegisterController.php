@@ -93,7 +93,7 @@ class RegisterController extends Controller
         }
         catch(\Exception $e)
         {
-            return redirect('/')->with('status', $e);
+            return redirect('/');
         }
 
         $socialProvider = Social::where('provider_id', $socialUser->getId())->first();
