@@ -79,7 +79,7 @@
     <div class="wrapper">
 
         <!-- HEADER -->
-        <header id="header" class="">
+        <header id="header" class="header-transparent">
             <div id="header-wrap">
                 <div class="container">
 
@@ -728,6 +728,11 @@
             </div>
         </header>
         <!-- END: HEADER -->
+        
+        <!-- PAGE HEADER -->
+                @yield('page-header')
+        <!-- END: PAGE HEADER -->
+
 
         <!-- PEGAR PAGINA -->
                 @yield('content')

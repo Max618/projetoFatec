@@ -14,6 +14,7 @@ Logado
 
                     <div class="panel-body">
                         You are logged in!
+                        <a href="{{ route('projeto.create') }}">Novo</a>
                     </div>
                 </div>
             </div>

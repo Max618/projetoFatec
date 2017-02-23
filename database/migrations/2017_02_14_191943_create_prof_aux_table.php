@@ -17,6 +17,7 @@ class CreateProfAuxTable extends Migration
             $table->increments('id');
             $table->string('name', 150);
             $table->string('email', 80)->unique();
+            $table->integer('projeto_id');
             $table->timestamps();
         });
     }

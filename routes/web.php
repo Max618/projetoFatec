@@ -24,4 +24,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::resource('projetos','ProjetosController');
+Route::resource('projeto','ProjetosController');

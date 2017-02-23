@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Projeto;
-
+use App;
+use Vinkla\Facebook\Facades\Facebook;
 
 class ProjetosController extends Controller
 {
+
+    public function __construct() 
+    {
+        $this->middleware('auth')->except('show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +31,13 @@ class ProjetosController extends Controller
      */
     public function create()
     {
-        return view('criar-projeto');
+        $ambitos = App\Ambito::all()->pluck('name','id');
+        //dd($ambitos);
+        $categorias = App\Categoria::all()->pluck('name','id');
+        $eixos = App\Eixo::all()->pluck('name','id');
+        $instituicoes = App\Instituicao::all();
+        return view('projeto.form-novo')
+            ->with(compact('ambitos', 'categorias', 'eixos', 'instituicoes'));
     }
 
     /**
@@ -36,8 +48,13 @@ class ProjetosController extends Controller
      */
     public function store(Request $request)
     {
-        $projeto = Projeto::create($request->only('name', 'descricao', 'ambito_id', 'categoria_id', 'eixo_id', 'cronograma', 'comentarios_prof', 'ancora', 'questao_motriz', 'n_alunos', 'prazo', 'feedback', 'resultado', 'tags'));
-        if($projeto){
+        $projeto = new App\Projeto();
+        $projeto->fill($request->only('name', 'descricao', 'ambito_id', 'categoria_id', 'eixo_id', 'cronograma', 'comentarios_prof', 'ancora', 'questao_motriz', 'n_alunos', 'prazo', 'feedback', 'resultado', 'tags'));
+        $projeto->ambito_id = $request->input('ambito_id');
+        $projeto->categoria_id = $request->input('categoria_id');
+        $projeto->eixo_id = $request->input('eixo_id');
+        
+        if($projeto->save()){
             return "foi";
         }  
     }
