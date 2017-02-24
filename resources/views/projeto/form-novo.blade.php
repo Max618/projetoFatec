@@ -25,6 +25,21 @@ Criar Novo Projeto
 
 @section('content')
 <section class="p-t-60">
+@if(Session::has('sucesso'))
+    <div class="container">
+        <div role="alert" class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
+            <strong><i class="fa fa-check-circle"></i> Sucesso!</strong> {{session('sucesso')}}
+        </div>
+    </div>
+@elseif(Session::has('erro'))
+    <div class="container">
+        <div role="alert" class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
+            <strong><i class="fa fa-warning"></i> Erro!</strong> {{session('erro')}}
+        </div>
+    </div>
+@endif
 <!--Castrar Projeto Form-->
 <div class="hr-title hr-long center"><abbr>Parte 1</abbr></div>
     <div class="row">
@@ -65,13 +80,13 @@ Criar Novo Projeto
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="upper" for="ambito_id">Ambito</label>
-                           {!! Form::select('ambito_id', $ambitos, null, ['class' => 'form-control']) !!}
+                           {!! Form::select('ambito_id', $ambitos, 'Selecione', ['class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="upper" for="categoria">Categoria</label>
-                            {!! Form::select('categoria_id', $categorias, null, ['class' => 'form-control']) !!}
+                            {!! Form::select('categoria_id', $categorias, 'Selecione', ['class' => 'form-control']) !!}
                         </div>
                     </div>
                 </div>
@@ -79,7 +94,7 @@ Criar Novo Projeto
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="upper" for="eixo">Eixo</label>
-                            {!! Form::select('eixo_id', $eixos, null, ['class' => 'form-control']) !!}
+                            {!! Form::select('eixo_id', $eixos, 'Selecione', ['class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -94,18 +109,13 @@ Criar Novo Projeto
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="upper" for="instituicao">Instituição</label>
-                            <select id="instituicao" class="form-control">
-                            <option>Selecione</option>
-                            @foreach($instituicoes as $instituicao)
-                                <option value={{$instituicao->id}}>{{$instituicao->name}}</option>
-                            @endforeach
-                            </select>
+                            {!! Form::select('instituicao_id', $instituicoes, 'Selecione', ['class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="upper" for="prazo">Prazo</label>
-                            <input type="date" class="form-control required" name="prazo" placeholder="Prazo" id="prazo" aria-required="true">
+                            <input type="number" class="form-control required" name="prazo" placeholder="Número de Aulas" id="prazo" aria-required="true">
                         </div>
                     </div>
                 </div>

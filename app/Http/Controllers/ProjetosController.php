@@ -35,9 +35,8 @@ class ProjetosController extends Controller
         //dd($ambitos);
         $categorias = App\Categoria::all()->pluck('name','id');
         $eixos = App\Eixo::all()->pluck('name','id');
-        $instituicoes = App\Instituicao::all();
-        return view('projeto.form-novo')
-            ->with(compact('ambitos', 'categorias', 'eixos', 'instituicoes'));
+        $instituicoes = App\Instituicao::all()->pluck('name','id');
+        return view('projeto.form-novo')->with(compact('ambitos', 'categorias', 'eixos', 'instituicoes'));
     }
 
     /**
@@ -48,15 +47,15 @@ class ProjetosController extends Controller
      */
     public function store(Request $request)
     {
-        $projeto = new App\Projeto();
-        $projeto->fill($request->only('name', 'descricao', 'ambito_id', 'categoria_id', 'eixo_id', 'cronograma', 'comentarios_prof', 'ancora', 'questao_motriz', 'n_alunos', 'prazo', 'feedback', 'resultado', 'tags'));
-        $projeto->ambito_id = $request->input('ambito_id');
-        $projeto->categoria_id = $request->input('categoria_id');
-        $projeto->eixo_id = $request->input('eixo_id');
-        
-        if($projeto->save()){
-            return "foi";
-        }  
+        try
+        {
+            $prof_aux = App\Prof_aux::firstOrCreate($request->only('name_prof', 'email'));
+            $projeto = $prof_aux->projeto()->create($request->only('name', 'descricao', 'instituicao_id', 'eixo_id', 'categoria_id', 'ambito_id', 'cronograma', 'comentarios_prof', 'ancora', 'questao_motriz', 'n_alunos', 'prazo', 'feedback', 'tags'));
+        } catch (\Exception $e)
+        {
+            return redirect()->route('projeto.create')->with(['erro' =>'Erro ao tentar criar o Projeto, por favor confira os dados e tente novamente']);
+        }
+        return redirect()->route('projeto.create')->with(['sucesso' => 'Projeto criado com Sucesso!']);
     }
 
     /**

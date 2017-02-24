@@ -13,7 +13,7 @@ class Eixo extends Model
     // 1 eixo - N projetos
     public function projeto()
     {
-        return $this->hasMany(Projeto::class);
+        return $this->hasMany('App\Projeto');
     }
 
     // 1 eixo - 1 aviso

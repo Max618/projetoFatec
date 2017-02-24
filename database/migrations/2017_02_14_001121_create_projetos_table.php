@@ -27,9 +27,11 @@ class CreateProjetosTable extends Migration
             $table->string('n_alunos', 2);
             $table->string('prazo', 2);
             $table->text('feedback');
-            $table->text('resultado');
+            $table->text('resultado')->nullable();
             $table->string('tags', 150);
-            $table->integer('total_visualizacao');
+            $table->integer('prof_aux_id');
+            $table->integer('total_visualizacao')->nullable();
+            $table->integer('instituicao_id');
             $table->timestamps();
         });
     }

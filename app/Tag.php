@@ -4,21 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model
+class Tag extends Model
 {
     protected $fillable = [
         'name', 'descricao',
     ];
 
-    // 1 categoria - N projetos
+    // 1 tag - N projetos
     public function projeto()
     {
         return $this->hasMany('App\Projeto');
-    }
-
-    // 1 categoria - 1 aviso
-    public function aviso()
-    {
-        return $this->hasOne(Aviso::class);
     }
 }
