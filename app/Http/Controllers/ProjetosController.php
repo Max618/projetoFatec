@@ -11,7 +11,7 @@ class ProjetosController extends Controller
 
     public function __construct() 
     {
-        $this->middleware('auth')->except('show');
+        $this->middleware('auth')->except('show','index');
     }
 
     /**
@@ -21,7 +21,8 @@ class ProjetosController extends Controller
      */
     public function index()
     {
-        //
+        $projetos = App\Projeto::all();
+        return view('projeto.ver-todos')->with(compact('projetos'));
     }
 
     /**

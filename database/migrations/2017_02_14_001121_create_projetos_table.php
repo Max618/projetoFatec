@@ -32,7 +32,7 @@ class CreateProjetosTable extends Migration
             $table->integer('prof_aux_id');
             $table->integer('total_visualizacao')->nullable();
             $table->integer('instituicao_id');
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 

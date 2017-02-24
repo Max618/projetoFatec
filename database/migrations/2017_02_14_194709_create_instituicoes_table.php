@@ -24,7 +24,7 @@ class CreateInstituicoesTable extends Migration
             $table->string('cep', 8);
             $table->string('cidade', 30);
             $table->string('estado', 30);
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 

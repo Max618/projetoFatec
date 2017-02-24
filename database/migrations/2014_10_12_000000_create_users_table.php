@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('estado', 30)->nullable();
             $table->string('avatar', 200)->nullable();
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 

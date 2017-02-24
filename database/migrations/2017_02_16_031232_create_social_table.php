@@ -18,7 +18,7 @@ class CreateSocialTable extends Migration
             $table->integer('user_id');
             $table->string('provider_id');
             $table->string('provider');
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 
