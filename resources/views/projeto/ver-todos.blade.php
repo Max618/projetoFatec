@@ -23,39 +23,116 @@
     </section>
 @endsection
 
+@php
+function trocaMes($mes){
+        $mes_extenso = array(
+            'January' => 'Janeiro',
+            'February' => 'Fevereiro',
+            'March' => 'Março',
+            'April' => 'Abril',
+            'May' => 'Maio',
+            'June' => 'Junho',
+            'July' => 'Julho',
+            'August' => 'Agosto',
+            'November' => 'Novembro',
+            'September' => 'Setembro',
+            'October' => 'Outubro',
+            'December' => 'Dezembro'
+        );
+        return $mes_extenso[$mes];
+    }
+@endphp
+
 @section('content')
-<section>
-    <div class="container portfolio">
-        <!-- Portfolio Items -->
-        <div id="isotope" class="isotope portfolio-items" data-isotope-item-space="3" data-isotope-mode="masonry" data-isotope-col="3" data-isotope-item=".portfolio-item">
-            @foreach($projetos as $projeto)
-                <div class="portfolio-item design artwork">
-                    <div class="portfolio-image effect social-links">
-                        <img src="images/portfolio/15.jpg" alt="">
-                        <div class="image-box-content">
-                            <p>
-                                <a href="images/portfolio/1.jpg" data-lightbox-type="image" title="Your image title here!"><i class="fa fa-expand"></i></a>
-                                <a href="{{ route('projeto.show', $projeto->id) }}"><i class="fa fa-link"></i></a>
-                            </p>
+    <section>
+        <div class="container">
+            <!-- Blog post-->
+            <div class="post-content post-modern post-3-columns">
+                <!-- Blog image post-->
+                @forelse($projetos as $projeto)
+                    <div class="post-item p-t-30">
+                        <div class="post-image">
+                            <a href="{{ route('projeto.show', $projeto->id) }}">
+                                <img alt="" src="images/blog/thumb/1.jpg">
+                            </a>
+                        </div>
+                        <div class="post-content-details">
+                            <div class="post-title">
+                                <h3><a href="#">{{  $projeto->name }}</a></h3>
+                            </div>
+                            <div class="post-info">
+                                <span class="post-autor">Postado por: <a href="#">{{ $projeto->user['name'] }}</a></span>
+                                <span class="post-category">de: <a href="#">{{ $projeto->instituicao['name'] }}</a></span>
+                            </div>
+                            <div class="post-description">
+                                <p>{{ $projeto->descricao }}</p>
+
+                                <div class="post-info">
+                                    <a class="read-more" href="{{ route('projeto.show', $projeto->id) }}">Ler mais <i class="fa fa-long-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="post-meta">
+                            <div class="post-date">
+                                <span class="post-date-day">{{ $projeto->created_at->format('d') }}</span>
+                                <span class="post-date-month">{{ trocaMes($projeto->created_at->format('F')) }}</span>
+                                <span class="post-date-year">{{ $projeto->created_at->format('Y') }}</span>
+                            </div>
+
+                            <div class="post-comments">
+                                    <i class="fa fa-thumbs-o-up"></i>
+                                    <span class="post-comments-number">{{ $projeto->total_curtidas }}</span>
+                            </div>
+                            <div class="post-comments">
+                                    <i class="fa fa-comments-o"></i>
+                                    <span class="post-comments-number">{{ $projeto->total_coments }}</span>
+                            </div>
+                            <div class="post-comments">
+                                    <i class="fa fa-share-alt"></i>
+                                    <span class="post-comments-number">{{ $projeto->total_comp }}</span>
+                            </div>
+                            <div class="post-comments">
+                                    <i class="fa fa-eye"></i>
+                                    <span class="post-comments-number">{{ $projeto->total_visualizacao }}</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="portfolio-description">
-                        <h4 class="title">{{$projeto->name}}</h4>
-                        <p><i class="fa fa-tag"></i>{{$projeto->tags}}</p>
-                    </div>
-                    <div class="portfolio-date">
-                        <p class="small"><i class="fa fa-calendar-o"></i>{{ \Carbon\Carbon::parse($projeto->created_at)->format('d/m/Y') }}</p>
-                    </div>
-                    <div class="portfolio-details">
-                        <strong>Descrição:</strong>
-                        <p>{{$projeto->descricao}}</p>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-        <!-- END: Portfolio Items -->
-    </div>
-    <hr class="space">
+                @empty
+                    <p>Sem posts</p>
+                @endforelse
 
-</section>
+<!-- pagination nav -->
+<div class="text-center">
+        <div class="pagination-wrap">
+            <ul class="pagination">
+                <li>
+                    <a aria-label="Previous" href="#">
+                        <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
+
+                    </a>
+                </li>
+                <li><a href="#">1</a>
+                </li>
+                <li><a href="#">2</a>
+                </li>
+                <li class="active"><a href="#">3</a>
+                </li>
+                <li><a href="#">4</a>
+                </li>
+                <li><a href="#">5</a>
+                </li>
+                <li>
+                    <a aria-label="Next" href="#">
+                        <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+<!-- END: pagination nav -->
+
+            </div>
+        </div>
+    </section>
 @endsection

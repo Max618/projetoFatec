@@ -45,4 +45,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Execucao::class, 'execucao_user');
     }
+
+    // 1 user - N projetos
+    public function projetos()
+    {
+        return $this->hasMany('App\Projeto');
+    }
 }

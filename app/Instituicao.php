@@ -15,4 +15,9 @@ class Instituicao extends Model
     {
     	return $this->belongsToMany(Execucao::class, 'execucao_instituicao');
     }
+
+    public function projetos()
+    {
+    	return $this->hasMany('App\Projeto');
+    }
 }

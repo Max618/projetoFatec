@@ -15,6 +15,7 @@ class CreateProjetosTable extends Migration
     {
         Schema::create('projetos', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->nullable();
             $table->string('name', 60);
             $table->string('descricao', 30);
             $table->integer('ambito_id');
@@ -30,7 +31,10 @@ class CreateProjetosTable extends Migration
             $table->text('resultado')->nullable();
             $table->string('tags', 150);
             $table->integer('prof_aux_id');
-            $table->integer('total_visualizacao')->nullable();
+            $table->integer('total_curtidas')->default(0);
+            $table->integer('total_comp')->default(0);
+            $table->integer('total_coments')->default(0);
+            $table->integer('total_visualizacao')->default(0);
             $table->integer('instituicao_id');
             $table->timestampsTz();
         });

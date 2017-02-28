@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 use Vinkla\Facebook\Facades\Facebook;
+use Cache;
 
 class ProjetosController extends Controller
 {
@@ -21,7 +22,7 @@ class ProjetosController extends Controller
      */
     public function index()
     {
-        $projetos = App\Projeto::all();
+        $projetos = App\Projeto::orderBy('created_at', 'desc')->get();
         return view('projeto.ver-todos')->with(compact('projetos'));
     }
 
@@ -48,14 +49,22 @@ class ProjetosController extends Controller
      */
     public function store(Request $request)
     {
-        try
-        {
-            $prof_aux = App\Prof_aux::firstOrCreate($request->only('name_prof', 'email'));
-            $projeto = $prof_aux->projeto()->create($request->only('name', 'descricao', 'instituicao_id', 'eixo_id', 'categoria_id', 'ambito_id', 'cronograma', 'comentarios_prof', 'ancora', 'questao_motriz', 'n_alunos', 'prazo', 'feedback', 'tags'));
-        } catch (\Exception $e)
-        {
+        try{
+            $projeto = new App\Projeto();
+            $projeto->fill($request->only('name', 'descricao', 'instituicao_id', 'eixo_id', 'categoria_id', 'ambito_id', 'cronograma', 'comentarios_prof', 'ancora', 'questao_motriz', 'n_alunos', 'prazo', 'feedback', 'tags'));
+
+            $projeto->fill(['user_id' => auth()->user()->id]);
+
+            if($request->only('name_prof', 'email')){
+                $prof_aux = App\Prof_aux::firstOrCreate($request->only('name_prof', 'email'));
+                $projeto->prof_aux_id = $prof_aux->id;
+            }
+
+            $projeto->save();
+        } catch(\Excepition $e){
             return redirect()->route('projeto.create')->with(['erro' =>'Erro ao tentar criar o Projeto, por favor confira os dados e tente novamente']);
         }
+  
         return redirect()->route('projeto.create')->with(['sucesso' => 'Projeto criado com Sucesso!']);
     }
 
@@ -67,7 +76,14 @@ class ProjetosController extends Controller
      */
     public function show($id)
     {
-        //
+        $projeto = App\Projeto::find($id);
+        if(! Cache::has($id))
+        {
+            Cache::add($id, 'contador', 0.30);
+            $projeto->total_visualizacao+=1;
+            $projeto->save();
+        }
+        return  view('projeto.ver-um')->with(compact('projeto'));
     }
 
     /**

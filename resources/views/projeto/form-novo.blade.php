@@ -100,7 +100,7 @@ Criar Novo Projeto
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="upper" for="tags">Tags</label>
-                            <input type="text" class="form-control required" name="tags" placeholder="Nome Projeto" id="tags" aria-required="true">
+                            <input type="text" class="form-control required" name="tags" placeholder="Separe uma tag da outra com '/'" id="tags" aria-required="true">
                         </div>
                     </div>
                 </div>

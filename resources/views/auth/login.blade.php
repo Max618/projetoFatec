@@ -57,7 +57,6 @@ Login
                                 <div class="panel-body">
                                     <a class="button blue-dark rounded icon-left" href="{{ route('loginSocial', 'facebook')}}"><span><i class="fa fa-facebook"></i>Facebook</span></a>
                                     <a href="{{ route('loginSocial', 'facebook')}}" class="button border effect fill-vertical">Login Facebook</a>
-                            </div>
                         </div>
                     </div>
     <!--END: Social Login Form-->
