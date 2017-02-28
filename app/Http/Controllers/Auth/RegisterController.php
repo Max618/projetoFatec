@@ -103,12 +103,15 @@ class RegisterController extends Controller
                 [
                 'email' => $socialUser->getEmail(),
                 'name' => $socialUser->getName(),
+                'avatar' => $socialUser->getAvatar(),
                 ]);
             $user->social()->create(
                 [
                 'provider_id' => $socialUser->getId(),
                 'provider' => $provider,
                 ]);
+            //$user->avatar = $socialUser->getAvatar();
+            //$user->save();
         }
         else 
             $user = $socialProvider->user;

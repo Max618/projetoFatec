@@ -18,7 +18,19 @@ function trocaMes($mes){
             'November' => 'Novembro',
             'September' => 'Setembro',
             'October' => 'Outubro',
-            'December' => 'Dezembro'
+            'December' => 'Dezembro',
+            'Jan' => 'Jan',
+            'Feb' => 'Fev',
+            'Mar' => 'Mar',
+            'Apr' => 'Abr',
+            'May' => 'Mai',
+            'Jun' => 'Jun',
+            'Jul' => 'Jul',
+            'Aug' => 'Ago',
+            'Nov' => 'Nov',
+            'Sep' => 'Set',
+            'Oct' => 'Out',
+            'Dec' => 'Dez'
         );
         return $mes_extenso[$mes];
     }
@@ -105,19 +117,19 @@ function trocaMes($mes){
 
                             <div class="post-comments">
                                     <i class="fa fa-thumbs-o-up"></i>
-                                    <span class="post-comments-number">@if($projeto->total_curtidas){{ $projeto->total_curtidas }}@else 0 @endif</span>
+                                    <span class="post-comments-number">{{ $projeto->total_curtidas }}</span>
                             </div>
                             <div class="post-comments">
                                     <i class="fa fa-comments-o"></i>
-                                    <span class="post-comments-number">@if($projeto->total_coments){{ $projeto->total_coments }}@else 0 @endif</span>
+                                    <span class="post-comments-number">{{ $projeto->total_coments }}</span>
                             </div>
                             <div class="post-comments">
                                     <i class="fa fa-share-alt"></i>
-                                    <span class="post-comments-number">@if($projeto->total_comp){{ $projeto->total_comp }}@else 0 @endif</span>
+                                    <span class="post-comments-number">{{ $projeto->total_comp }}</span>
                             </div>
                             <div class="post-comments">
                                     <i class="fa fa-eye"></i>
-                                    <span class="post-comments-number">@if($projeto->total_visualizacao){{ $projeto->total_visualizacao }}@else 0 @endif</span>
+                                    <span class="post-comments-number">{{ $projeto->total_visualizacao }}</span>
                             </div>
                         </div>
                 </div>
@@ -128,102 +140,51 @@ function trocaMes($mes){
                         <h4 class="comments-title">Comentários <small class="number">({{ $projeto->total_coments }})</small></h4>
                     </div>
 
-
+                    @forelse($projeto->comentario as $comentarios)
                     <div class="comment">
                         <a href="#" class="pull-left">
-                            <img alt="" src="images/team/1.jpg" class="avatar">
+                            <img alt="" src="{{ $comentarios->user['avatar'] }}" class="avatar">
                         </a>
                         <div class="media-body">
-                            <h4 class="media-heading">Alea Grande</h4>
-                            <p class="time">Feb 25, 2015 at 9:30 PM</p>
-                            <p>Maecenas nec iaculis turpis, eget congue massa. Ut ultrices consectetur eleifend. Nullam nisl dui, congue in mi non, dapibus adipiscing metus. Donec mollis semper rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed euismod neque. Aliquam eget malesuada enim, eu interdum elit. Sed sagittis ornare velit a congue.</p>
+                            <h4 class="media-heading">{{ $comentarios->user['name'] }}</h4>
+                            <p class="time">{{ trocaMes($comentarios->created_at->format('M')).$comentarios->created_at->format(' d, Y \à\s H:i') }}</p>
+                            <p>{{ $comentarios->comentario }}</p>
                             <a href="#" class="comment-reply pull-right"><i class="fa fa-reply"></i> Reply</a>
                         </div>
                     </div>
+                    @empty
 
-                    <div class="comment">
-                        <a href="#" class="pull-left">
-                            <img alt="" src="images/team/2.jpg" class="avatar">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">Juna Smith</h4>
-                            <p class="time">Jan 18, 2015 at 10:30 PM</p>
-                            <p>Nullam nisl dui, congue in mi non, dapibus adipiscing metus. Donec mollis semper rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed euismod neque. Aliquam eget malesuada enim, eu interdum elit. Sed sagittis ornare velit a congue.</p>
-                            <a href="#" class="comment-reply pull-right"><i class="fa fa-reply"></i> Reply</a>
-                        </div>
-
-
-
-                        <div class="comment comment-replied">
-                            <a href="#" class="pull-left">
-                                <img alt="" src="images/team/3.jpg" class="avatar">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Ariol Smith</h4>
-                                <p class="time">Jun 24, 2015 at 14:28 PM</p>
-                                <p>Ut ultrices consectetur eleifend. Nullam nisl dui, congue in mi non, dapibus adipiscing metus. Donec mollis semper rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed euismod neque. Aliquam eget malesuada enim, eu interdum elit. Sed sagittis ornare velit a congue.</p>
-                                <a href="#" class="comment-reply pull-right"><i class="fa fa-reply"></i> Reply</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="comment">
-                        <a href="#" class="pull-left">
-                            <img alt="" src="images/team/4.jpg" class="avatar">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">Dia Perry</h4>
-                            <p class="time">Jun 24, 2015 at 14:28 PM</p>
-                            <p>Donec mollis semper rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed euismod neque. Aliquam eget malesuada enim, eu interdum elit. Donec mollis semper rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed euismod neque. Aliquam eget malesuada enim, eu interdum elit. Sed sagittis ornare velit a congue. Sed sagittis ornare velit a congue. Maecenas nec iaculis turpis, eget congue massa. Ut ultrices consectetur eleifend. Nullam nisl dui, congue in mi non, dapibus adipiscing metus. </p>
-                            <a href="#" class="comment-reply pull-right"><i class="fa fa-reply"></i> Reply</a>
-                        </div>
-                    </div>
-
+                    @endforelse
                 </div>
                 <div class="comment-form">
                     <div class="heading">
-                        <h4>Leave a comment</h4>
+                        <h4>Escreva um Comentário</h4>
                     </div>
-                    <form class="form-gray-fields">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="name" class="upper">Your Name</label>
-                                    <input type="text" aria-required="true" id="name" placeholder="Enter name" name="senderName" class="form-control required">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="email" class="upper">Your Email</label>
-                                    <input type="email" aria-required="true" id="email" placeholder="Enter email" name="senderEmail" class="form-control required email">
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="phone" class="upper">Your Phone</label>
-                                    <input type="text" aria-required="true" id="phone" placeholder="Enter phone" name="phone" class="form-control required">
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="comment" class="upper">Your comment</label>
-                                    <textarea aria-required="true" id="comment" placeholder="Enter comment" rows="9" name="comment" class="form-control required"></textarea>
-                                </div>
+                    {!! Form::open(['route' => ['social.comentar', $projeto->id], 'methood' => 'post', 'class' => 'form-gray-fields']) !!}
+                    {{ csrf_field() }}
+                    @if(!Auth::guest())
+                    <input type="hidden" name="projeto_id" value="{{ $projeto->id }}">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea aria-required="true" id="comentario" placeholder="Comentário" rows="9" name="comentario" class="form-control required"></textarea>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group text-center">
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i>&nbsp;Post comment</button>
-                                </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i>&nbsp;Enviar Comentário</button>
                             </div>
                         </div>
-
-                    </form>
+                    </div>
+                    @else
+                    <div class="form-group">
+                        <label class="upper" for="botao">Entre Para Fazer um Comentário</label>
+                        <a class="button blue-dark rounded icon-left" id="botao" href="{{ route('loginSocial', 'facebook')}}"><span><i class="fa fa-facebook"></i>Facebook</span></a>
+                    </div>
+                    @endif
+                    {!! Form::close() !!}
                 </div>
                 <!-- END: Comments-->
             </div>

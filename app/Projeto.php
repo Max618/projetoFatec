@@ -51,4 +51,10 @@ class Projeto extends Model
     {
         return $this->belongsTo('App\Instituicao');
     }
+
+    // 1 user - N comentarios
+    public function comentario() 
+    {
+        return $this->hasMany('App\Comentario');
+    }
 }

@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'telefone', 'logradouro', 'numero_log', 'complemento', 'cep', 'cidade', 'estado',
+        'name', 'email', 'password', 'telefone', 'logradouro', 'numero_log', 'complemento', 'cep', 'cidade', 'estado','avatar',
     ];
 
     /**
@@ -50,5 +50,11 @@ class User extends Authenticatable
     public function projetos()
     {
         return $this->hasMany('App\Projeto');
+    }
+
+    // 1 user - N comentarios
+    public function comentario() 
+    {
+        return $this->hasMany('App\Comentario');
     }
 }

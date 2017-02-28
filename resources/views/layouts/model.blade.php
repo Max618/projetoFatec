@@ -687,7 +687,7 @@
                         @if (!Auth::guest())
                             <li class="dropdown"><a href="#">
                              @if (session('socialUser'))
-                            <img height="30px" width="30px" class="border" src="{{ session('socialUser')->getAvatar() }}">
+                            <img height="30px" width="30px" class="avatar" src="{{ session('socialUser')->getAvatar() }}">
                             @endif
                             Perfil <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">

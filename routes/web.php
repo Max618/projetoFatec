@@ -25,3 +25,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::resource('projeto','ProjetosController');
+
+Route::post('/comentar','SocialController@comentar')->name('social.comentar');
