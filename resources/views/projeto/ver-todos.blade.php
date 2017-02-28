@@ -102,32 +102,11 @@ function trocaMes($mes){
                     <p>Sem posts</p>
                 @endforelse
 
+
 <!-- pagination nav -->
 <div class="text-center">
         <div class="pagination-wrap">
-            <ul class="pagination">
-                <li>
-                    <a aria-label="Previous" href="#">
-                        <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
-
-                    </a>
-                </li>
-                <li><a href="#">1</a>
-                </li>
-                <li><a href="#">2</a>
-                </li>
-                <li class="active"><a href="#">3</a>
-                </li>
-                <li><a href="#">4</a>
-                </li>
-                <li><a href="#">5</a>
-                </li>
-                <li>
-                    <a aria-label="Next" href="#">
-                        <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
-                    </a>
-                </li>
-            </ul>
+            {{ $projetos->links() }}
         </div>
     </div>
 <!-- END: pagination nav -->

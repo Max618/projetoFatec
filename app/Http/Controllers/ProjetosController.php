@@ -22,7 +22,7 @@ class ProjetosController extends Controller
      */
     public function index()
     {
-        $projetos = App\Projeto::orderBy('created_at', 'desc')->get();
+        $projetos = App\Projeto::orderBy('created_at', 'desc')->paginate(6);
         return view('projeto.ver-todos')->with(compact('projetos'));
     }
 
