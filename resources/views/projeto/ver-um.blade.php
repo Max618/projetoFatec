@@ -36,12 +36,13 @@ function trocaMes($mes){
     }
 @endphp
 
+
 @section('content')
 <section class="content">
     <div class="container">
-             
+        <div class="row">
             <!-- Blog post-->
-            <div class="post-content post-content-single post-modern">
+            <div class="post-content post-content-single col-md-9">
                 <!-- Post item-->
                 <div class="post-item">
                     <div class="post-image">
@@ -53,54 +54,55 @@ function trocaMes($mes){
                         <div class="post-title">
                             <h1>{{ $projeto->name }}</h1>
                             <span class="post-autor"><strong>Postado por: </strong><a href="#">{{ $projeto->user['name'] }}</a></span>
-                            <span class="post-category"><strong>de </strong><a href="#">{{ $projeto->instituicao['name'] }}</a></span><br>
+                            <span class="post-category"><strong>de </strong><a href="#">{{ $projeto->instituicao['name'] }}</a></span>
+                            <br>
                             <span class="post-category"><strong>Categoria:</strong> <a href="#">{{ $projeto->categoria['name'] }},</a></span>
                             <span class="post-category"><strong>Ambito: </strong><a href="#">{{ $projeto->ambito['name'] }},</a></span>
                             <span class="post-category"><strong>Eixo: </strong><a href="#">{{ $projeto->eixo['name'] }},</a></span>
-                            <span class="post-category"><strong>Tags: </strong><a href="#"></span>
-                            <span class="label label-default">{{ $projeto->tags }}</span></a>
+                            <span class="post-category"><strong>Tags: </strong></span>
+                            <a href="#"><span class="label label-default">{{ $projeto->tags }}</a></span>
                         </div>
 
-                        <div class="seperator"></div>
+                        <div id="descricao" class="seperator"></div>
 
                         <div class="post-description">
                             <h3>Descrição: </h3>
                             <p>{{ $projeto->descricao }}</p>
-                            <div class="seperator"></div>
+                            <div id="cronograma" class="seperator"></div>
                             
                             <h3>Cronograma: </h3>
                             <p>{{ $projeto->cronograma }}</p>
-                            <div class="seperator"></div>
+                            <div id="ancora" class="seperator"></div>
 
                             <h3>Âncora: </h3>
                             <p>{{ $projeto->ancora }}</p>
-                            <div class="seperator"></div>
+                            <div id="questao_motriz" class="seperator"></div>
                             
                             <h3>Questão Motriz: </h3>
                             <p>{{ $projeto->questao_motriz }}</p>
-                            <div class="seperator"></div>
+                            <div id="n_alunos" class="seperator"></div>
 
                             <h3>Número de Alunos por Grupo: </h3>
                             <p>{{ $projeto->n_alunos }}</p>
-                            <div class="seperator"></div>
+                            <div id="prazo" class="seperator"></div>
 
                             <h3>Prazo de Aulas: </h3>
                             <p>{{ $projeto->prazo }}</p>
-                            <div class="seperator"></div>
+                            <div id="feedback" class="seperator"></div>
 
                             <h3>FeedBack: </h3>
                             <p>{{ $projeto->feedback }}</p>
-                            <div class="seperator"></div>
+                            <div id="resultado" class="seperator"></div>
 
                             <h3>Resultado: </h3>
                             <p>{{ $projeto->resultado }}</p>
-                            <div class="seperator"></div>
+                            <div id="comentarios_prof" class="seperator"></div>
 
                             <h3>Comentários do Professor: </h3>
                             <p>{{ $projeto->comentarios_prof }}</p>
     
                             @if($projeto->prof_aux_id)
-                            <div class="seperator"></div>
+                            <div id="prof_aux" class="seperator"></div>
                             <h3>Profesor Auxiliar: </h3>
                             <p><strong>Nome:</strong> {{ $projeto->prof_aux['name_prof'] }}<br>
                             <strong>Email:</strong> {{ $projeto->prof_aux['email'] }}</p>
@@ -108,6 +110,7 @@ function trocaMes($mes){
 
                         </div>
                     </div>
+
                     <div class="post-meta">
                             <div class="post-date">
                                 <span class="post-date-day">{{ $projeto->created_at->format('d') }}</span>
@@ -120,8 +123,9 @@ function trocaMes($mes){
                                     <span class="post-comments-number">{{ $projeto->total_curtidas }}</span>
                             </div>
                             <div class="post-comments">
+                                    <a class="scroll-to" href="#comentar">
                                     <i class="fa fa-comments-o"></i>
-                                    <span class="post-comments-number">{{ $projeto->total_coments }}</span>
+                                    <span class="post-comments-number">{{ $projeto->total_coments }}</a></span>
                             </div>
                             <div class="post-comments">
                                     <i class="fa fa-share-alt"></i>
@@ -131,7 +135,7 @@ function trocaMes($mes){
                                     <i class="fa fa-eye"></i>
                                     <span class="post-comments-number">{{ $projeto->total_visualizacao }}</span>
                             </div>
-                        </div>
+                    </div>
                 </div>
                 
                 <!-- Comments-->
@@ -156,7 +160,7 @@ function trocaMes($mes){
 
                     @endforelse
                 </div>
-                <div class="comment-form">
+                <div id="comentar" class="comment-form">
                     <div class="heading">
                         <h4>Escreva um Comentário</h4>
                     </div>
@@ -189,7 +193,38 @@ function trocaMes($mes){
                 <!-- END: Comments-->
             </div>
             <!-- END: Blog post-->
-
+            <!--Sidebar -->
+            <div id="sidebar" class="sidebar col-md-3">
+                <div class="sidebar-menu">
+                    <h4>Menu Lateral</h4>
+                    <ul>
+                        <li><a class="scroll-to" href="#descricao">Descrição</a>
+                        </li>
+                        <li><a class="scroll-to" href="#cronograma">Cronograma</a>
+                        </li>
+                        <li><a class="scroll-to" href="#ancora">Âncora</a>
+                        </li>
+                        <li><a class="scroll-to" href="#questao_motriz">Questão Motriz</a>
+                        </li>
+                        <li><a class="scroll-to" href="#n_alunos">Número de Alunos</a>
+                        </li>
+                        <li><a class="scroll-to" href="#prazo">Prazo</a>
+                        </li>
+                        <li><a class="scroll-to" href="#feedback">FeedBack</a>
+                        </li>
+                        <li><a class="scroll-to" href="#resultado">Resultado</a>
+                        </li>
+                        <li><a class="scroll-to" href="#comentarios_prof">Comentários Professor</a>
+                        </li>
+                        @if($projeto->prof_aux_id)
+                        <li><a class="scroll-to" href="#prof_aux">Professor Auxiliar</a>
+                        </li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
+            <!--END: Sidebar -->
+        </div>
     </div>
 </section>
 @endsection
