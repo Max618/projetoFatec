@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use Share;
 
 class SocialController extends Controller
 {
@@ -26,5 +27,12 @@ class SocialController extends Controller
     	{
     		return redirect('/');
     	}
+    }
+    public function compartilhar($provider, $id) 
+    {
+        $url = env('APP_URL')."/projeto/".$id;
+        return redirect(Share::load($url, 'Olhe este projeto!')->$provider());
+        //return redirect(Share::load('http://www.example.com', 'Olhe este projeto!', session('socialUser')->getAvatar())->$provider());
+
     }
 }

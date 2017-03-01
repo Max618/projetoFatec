@@ -128,8 +128,17 @@ function trocaMes($mes){
                                     <span class="post-comments-number">{{ $projeto->total_coments }}</a></span>
                             </div>
                             <div class="post-comments">
+                                    <a data-container="body" data-toggle="popover" data-placement="top" title="Compartilhar" data-content="
+                                    <div class='social-icons social-icons-colored-hover'>
+                                    <ul>
+                                        <li class='social-facebook'><a target='_blank' href='{{ route('social.compartilhar', ['provider' =>'facebook', 'id' => $projeto->id] ) }}'><i class='fa fa-facebook'></i></a></li>
+                                        <li class='social-twitter'><a target='_blank' href='{{ route('social.compartilhar', ['provider' =>'twitter', 'id' => $projeto->id] ) }}'><i class='fa fa-twitter'></i></a></li>
+                                        <li class='social-gplus'><a target='_blank' href='{{ route('social.compartilhar', ['provider' =>'gplus', 'id' => $projeto->id] ) }}'><i class='fa fa-google-plus'></i></a></li>
+                                    </ul>
+                                    </div>
+                                    ">
                                     <i class="fa fa-share-alt"></i>
-                                    <span class="post-comments-number">{{ $projeto->total_comp }}</span>
+                                    <span class="post-comments-number">{{ $projeto->total_comp }}</span></a>
                             </div>
                             <div class="post-comments">
                                     <i class="fa fa-eye"></i>
