@@ -74,9 +74,7 @@ class RegisterController extends Controller
 
     public function redirectToProvider($provider = null)
     {
-        if(! config("services.$provider")){
-            abort('404');
-        }
+        
         return Socialite::driver($provider)->redirect();
     }
 

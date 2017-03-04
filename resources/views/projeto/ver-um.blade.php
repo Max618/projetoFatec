@@ -113,8 +113,8 @@ function trocaMes($mes){
 
                     <div class="post-meta">
                             <div class="post-date">
-                                <span class="post-date-day">{{ $projeto->created_at->format('d') }}</span>
-                                <span class="post-date-month">{{ trocaMes($projeto->created_at->format('F')) }}</span>
+                                <span class="post-date-day">{{ $projeto->created_at->format('j') }} de</span>
+                                <span class="post-date-month">{{ trocaMes($projeto->created_at->format('F')) }} de</span>
                                 <span class="post-date-year">{{ $projeto->created_at->format('Y') }}</span>
                             </div>
 
@@ -160,7 +160,7 @@ function trocaMes($mes){
                         </a>
                         <div class="media-body">
                             <h4 class="media-heading">{{ $comentarios->user['name'] }}</h4>
-                            <p class="time">{{ trocaMes($comentarios->created_at->format('M')).$comentarios->created_at->format(' d, Y \à\s H:i') }}</p>
+                            <p class="time">{{ trocaMes($comentarios->created_at->format('M')).$comentarios->created_at->format(' j, Y \à\s H:i') }}</p>
                             <p>{{ $comentarios->comentario }}</p>
                             <a href="#" class="comment-reply pull-right"><i class="fa fa-reply"></i> Reply</a>
                         </div>

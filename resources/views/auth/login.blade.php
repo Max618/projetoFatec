@@ -8,7 +8,7 @@ Login
 <section class="p-t-60">
     <div class="container">
     <!--Login Form-->
-        <div class="hr-title hr-long center"><abbr>Login/abbr> </div>
+        <div class="hr-title hr-long center"><abbr>Login</abbr> </div>
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
@@ -53,15 +53,18 @@ Login
     <!--Social Login Form-->
                     <div class="hr-title hr-long center"><abbr>Ou</abbr></div>
                         <div class="row">
-                            <div class="col-md-6 col-md-offset-3">
+                            <div class="col-md-12">
                                 <div class="panel-body">
-                                    <a class="button blue-dark rounded icon-left" href="{{ route('loginSocial', 'facebook')}}"><span><i class="fa fa-facebook"></i>Facebook</span></a>
-                                    <a href="{{ route('loginSocial', 'facebook')}}" class="button border effect fill-vertical">Login Facebook</a>
+                                <ul class="list-inline">
+                                    <li><a class="button blue-dark rounded icon-left" href="{{ route('loginSocial', 'facebook')}}"><span><i class="fa fa-facebook"></i>Facebook</span></a></li>
+                                    <li><a class="button red-dark rounded icon-left" href="{{ route('loginSocial', 'google')}}"><span><i class="fa fa-google-plus"></i>Google+</span></a></li>
+                                    <li><a class="button blue rounded icon-left" href="{{ route('loginSocial', 'twitter')}}"><span><i class="fa fa-twitter"></i>Twitter</span></a></li>
+                                </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
     <!--END: Social Login Form-->
             </div>
-        </div>
     </div>
-</section>
 @endsection

@@ -16,11 +16,12 @@ class SocialController extends Controller
      */
     public function comentar(Request $request) 
     {
-    	try{
+        try{
     	$user = auth()->user();
     	$user->comentario()->create($request->only('projeto_id','comentario'));
     	$projeto = App\Projeto::find($request->only('projeto_id'));
     	$projeto[0]->total_coments+=1;
+        $projeto[0]->total_visualizacao-=1;
     	$projeto[0]->save();
     	return back();
     	} catch(\Exception $e)

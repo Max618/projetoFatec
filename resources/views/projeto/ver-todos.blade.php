@@ -58,7 +58,7 @@ function trocaMes($mes){
                         </div>
                         <div class="post-content-details">
                             <div class="post-title">
-                                <h3><a href="#">{{  $projeto->name }}</a></h3>
+                                <h3><a href="{{ route('projeto.show', $projeto->id) }}">{{  $projeto->name }}</a></h3>
                             </div>
                             <div class="post-info">
                                 <span class="post-autor">Postado por: <a href="#">{{ $projeto->user['name'] }}</a></span>

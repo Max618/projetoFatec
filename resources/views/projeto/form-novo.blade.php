@@ -24,21 +24,15 @@ Criar Novo Projeto
 @endsection
 
 @section('content')
-<section class="p-t-60">
-@if(Session::has('sucesso'))
-    <div class="container">
-        <div role="alert" class="alert alert-success alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
-            <strong><i class="fa fa-check-circle"></i> Sucesso!</strong> {{session('sucesso')}}
+@if(count($errors->all()) > 0)
+    @foreach($errors->all() as $error)
+        <div class="container">
+            <div role="alert" class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
+                <strong><i class="fa fa-warning"></i> Alerta!</strong> {{ $error }}
+            </div>
         </div>
-    </div>
-@elseif(Session::has('erro'))
-    <div class="container">
-        <div role="alert" class="alert alert-danger alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
-            <strong><i class="fa fa-warning"></i> Erro!</strong> {{session('erro')}}
-        </div>
-    </div>
+    @endforeach
 @endif
 <!--Castrar Projeto Form-->
 <div class="hr-title hr-long center"><abbr>Parte 1</abbr></div>
@@ -147,6 +141,12 @@ Criar Novo Projeto
                         </div>
                     </div>
                 </div>
+               <div class="row">
+                   <div class="col-md-12">
+                       <label class="upper" for="cronograma">RESULTADO</label>
+                       <textarea class="form-control required" name="resultado" rows="6" placeholder="Resultado" id="resultado" aria-required="true"></textarea>
+                   </div>
+               </div>
 <div class="hr-title hr-long center"><abbr>Parte 4 - Prof aux</abbr></div>
                 <div class="row">
                     <div class="col-md-6">

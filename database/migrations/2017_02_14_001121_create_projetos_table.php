@@ -30,7 +30,7 @@ class CreateProjetosTable extends Migration
             $table->text('feedback');
             $table->text('resultado')->nullable();
             $table->string('tags', 150);
-            $table->integer('prof_aux_id');
+            $table->integer('prof_aux_id')->nullable();
             $table->integer('total_curtidas')->default(0);
             $table->integer('total_comp')->default(0);
             $table->integer('total_coments')->default(0);

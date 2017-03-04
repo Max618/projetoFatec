@@ -689,13 +689,11 @@
                              @if (session('socialUser'))
                             <img height="30px" width="30px" class="avatar" src="{{ session('socialUser')->getAvatar() }}">
                             @endif
-                            Perfil <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                            <li class="dropdown-submenu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} 
-                                </a> 
-                                <ul class="dropdown-menu" role="menu">
+                            {{ Auth::user()->name }} <i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ route('home') }}">Home</a>
+                                    </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -705,13 +703,8 @@
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('home') }}">Home</a>
-                                    </li>
+                                    </li>   
                                 </ul>
-                            </li>
-                            </ul>
                             </li>
                         @else
                             <li><a href="{{ route('login') }}">Login</a></li>

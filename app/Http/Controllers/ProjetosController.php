@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App;
 use Vinkla\Facebook\Facades\Facebook;
 use Cache;
+use App\Http\Requests\RequestProjetoForm;
 
 class ProjetosController extends Controller
 {
@@ -47,25 +48,25 @@ class ProjetosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestProjetoForm $request)
     {
         try{
             $projeto = new App\Projeto();
-            $projeto->fill($request->only('name', 'descricao', 'instituicao_id', 'eixo_id', 'categoria_id', 'ambito_id', 'cronograma', 'comentarios_prof', 'ancora', 'questao_motriz', 'n_alunos', 'prazo', 'feedback', 'tags'));
+            $projeto->fill($request->only('name', 'resultado', 'descricao', 'instituicao_id', 'eixo_id', 'categoria_id', 'ambito_id', 'cronograma', 'comentarios_prof', 'ancora', 'questao_motriz', 'n_alunos', 'prazo', 'feedback', 'tags'));
 
             $projeto->fill(['user_id' => auth()->user()->id]);
 
-            if($request->only('name_prof', 'email')){
+            if(empty($request->only('name_prof', 'email'))){
                 $prof_aux = App\Prof_aux::firstOrCreate($request->only('name_prof', 'email'));
                 $projeto->prof_aux_id = $prof_aux->id;
             }
 
             $projeto->save();
         } catch(\Excepition $e){
-            return redirect()->route('projeto.create')->with(['erro' =>'Erro ao tentar criar o Projeto, por favor confira os dados e tente novamente']);
+            return redirect()->route('home')->with(['erro' =>'Erro ao tentar criar o Projeto, por favor confira os dados e tente novamente']);
         }
   
-        return redirect()->route('projeto.create')->with(['sucesso' => 'Projeto criado com Sucesso!']);
+        return redirect()->route('home')->with(['sucesso' => 'Projeto criado com Sucesso!']);
     }
 
     /**
