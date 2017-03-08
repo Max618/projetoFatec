@@ -72,17 +72,13 @@ class RegisterController extends Controller
         ]);
     }
 
+
     public function redirectToProvider($provider = null)
     {
         
         return Socialite::driver($provider)->redirect();
     }
 
-    /**
-     * Obtain the user information from GitHub.
-     *
-     * @return Response
-     */
     public function handleProviderCallback(Request $request, $provider)
     {
         try

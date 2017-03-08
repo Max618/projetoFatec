@@ -16,7 +16,7 @@
         ]) !!};
     </script>
 
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="/images/favicon.png">
 
     <title>Titulo | @yield('page-title')</title>
 
@@ -85,8 +85,8 @@
 
                     <!--LOGO-->
                     <div id="logo">
-                        <a href="index.html" class="logo" data-dark-logo="images/logo-dark.png">
-                            <img src="images/logo.png" alt="Polo Logo">
+                        <a href="index.html" class="logo" data-dark-logo="/images/logo-dark.png">
+                            <img src="/images/logo.png" alt="Polo Logo">
                         </a>
                     </div>
                     <!--END: LOGO-->
@@ -249,7 +249,7 @@
                                     </li>
                                     <li class="dropdown mega-menu-item"> <a href="#">Elements<i class="fa fa-angle-down"></i></a>
                                         <ul class="dropdown-menu">
-                                            <li class="mega-menu-content" style="background-image: url('images/shortcode-megamenu-bg.png');">
+                                            <li class="mega-menu-content" style="background-image: url('/images/shortcode-megamenu-bg.png');">
                                                 <div class="row">
                                                     <div class="col-md-2">
                                                         <ul>
@@ -643,7 +643,7 @@
                                     </li>
                                     <li class="dropdown mega-menu-item"> <a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                         <ul class="dropdown-menu">
-                                            <li class="mega-menu-content" style="background-image: url('images/shop-megamenu-bg.jpg');">
+                                            <li class="mega-menu-content" style="background-image: url('/images/shop-megamenu-bg.jpg');">
                                                 <div class="row">
                                                     <div class="col-md-3">
                                                         <ul>
@@ -692,7 +692,7 @@
                             {{ Auth::user()->name }} <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('home') }}">Home</a>
+                                        <a href="{{ route('home') }}"  class="icon-right"><span>Home <i class="fa fa-home"></i></span></a>
                                     </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
@@ -708,7 +708,7 @@
                             </li>
                         @else
                             <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('register') }}">Registrar</a></li>
                         @endif
                         <!--END: Authentication Links -->
 
@@ -738,7 +738,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="footer-logo float-left">
-                                <img alt="" src="images/logo-sm-dark.png">
+                                <img alt="" src="/images/logo-sm-dark.png">
                             </div>
                             <p style="margin-top: 12px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, sem quis lacinia faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat magna, id molestie ipsum volutpat quis. Suspendisse consectetur fringilla luctus. Fusce id mi diam, non ornare orci. Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel dolor.
                             </p>
@@ -750,7 +750,7 @@
 
 
                         <div class="col-md-4">
-                            <div class="widget clearfix widget-contact-us" style="background-image: url('images/world-map.png'); background-position: 50% 55px; background-repeat: no-repeat">
+                            <div class="widget clearfix widget-contact-us" style="background-image: url('/images/world-map.png'); background-position: 50% 55px; background-repeat: no-repeat">
                                 <h4 class="widget-title">Contact us</h4>
                                 <ul class="list-large list-icons">
                                     <li><i class="fa fa-map-marker"></i>
