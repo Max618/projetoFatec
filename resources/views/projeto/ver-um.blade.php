@@ -36,6 +36,28 @@ function trocaMes($mes){
     }
 @endphp
 
+@section('page-header')
+<!-- PAGE TITLE -->
+<section id="page-title">
+    <div class="container">
+        <div class="page-title col-md-8" data-animation="fadeInDown" data-animation-delay="300">
+            <h1>{{ $projeto->name }}</h1>
+            <span>{{ $projeto->descricao }}</span>
+        </div>
+        <div class="breadcrumb col-md-4" data-animation="fadeInDown" data-animation-delay="800">
+            <ul>
+                <li><a href="/"><i class="fa fa-home"></i></a>
+                </li>
+                <li><a href="{{ route('projeto.index') }}">Projetos</a>
+                </li>
+                <li><a href="{{ route('projeto.show', $projeto->id) }}">{{ $projeto->name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- END: PAGE TITLE -->
+@endsection
 
 @section('content')
 <section class="content">
@@ -53,9 +75,11 @@ function trocaMes($mes){
                     <div class="post-content-details">
                         <div class="post-title">
                             <h1>{{ $projeto->name }}</h1>
+                            <i class="fa fa-user"></i>
                             <span class="post-autor"><strong>Postado por: </strong><a href="#">{{ $projeto->user['name'] }}</a></span>
                             <span class="post-category"><strong>de </strong><a href="#">{{ $projeto->instituicao['name'] }}</a></span>
                             <br>
+                            <i class="fa fa-tags"></i>
                             <span class="post-category"><strong>Categoria:</strong> <a href="#">{{ $projeto->categoria['name'] }},</a></span>
                             <span class="post-category"><strong>Ambito: </strong><a href="#">{{ $projeto->ambito['name'] }},</a></span>
                             <span class="post-category"><strong>Eixo: </strong><a href="#">{{ $projeto->eixo['name'] }},</a></span>
@@ -159,8 +183,8 @@ function trocaMes($mes){
                             <img alt="" src="{{ $comentarios->user['avatar'] }}" class="avatar">
                         </a>
                         <div class="media-body">
-                            <h4 class="media-heading">{{ $comentarios->user['name'] }}</h4>
-                            <p class="time">{{ trocaMes($comentarios->created_at->format('M')).$comentarios->created_at->format(' j, Y \à\s H:i') }}</p>
+                            <h4 class="media-heading"><i class="fa fa-user"></i> {{ $comentarios->user['name'] }}</h4>
+                            <p class="time"><i class="fa fa-clock-o"></i> {{ trocaMes($comentarios->created_at->format('M')).$comentarios->created_at->format(' j, Y \à\s H:i') }}</p>
                             <p>{{ $comentarios->comentario }}</p>
                             <a href="#" class="comment-reply pull-right"><i class="fa fa-reply"></i> Reply</a>
                         </div>
@@ -204,9 +228,9 @@ function trocaMes($mes){
             <!-- END: Blog post-->
             <!--Sidebar -->
             <div id="sidebar" class="sidebar col-md-3">
-                <div class="sidebar-menu">
-                    <h4>Menu Lateral</h4>
-                    <ul>
+                <div class="widget clearfix widget-archive">
+                    <h4 class="widget-title">Navegar</h4>
+                    <ul class="list list-lines">
                         <li><a class="scroll-to" href="#descricao">Descrição</a>
                         </li>
                         <li><a class="scroll-to" href="#cronograma">Cronograma</a>

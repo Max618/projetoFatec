@@ -5,22 +5,24 @@
 @endsection
 
 @section('page-header')
-    <section id="page-title" class="page-title-parallax page-title-center text-dark" style="background-image:url(/images/parallax/page-title-parallax.jpg);">
-        <div class="container">
-            <div class="page-title col-md-8">
-                <h1>Projetos</h1>
-                <span>Inspiration comes of working every day.</span>
-            </div>
-            <div class="breadcrumb col-md-4">
-                <ul>
-                    <li><a href="#"><i class="fa fa-home"></i></a> </li>
-                    <li><a href="#">Home</a> </li>
-                    <li><a href="#">Shortcodes</a> </li>
-                    <li class="active"><a href="#">Buttons</a> </li>
-                </ul>
-            </div>
+<!-- PAGE TITLE -->
+<section id="page-title">
+    <div class="container">
+        <div class="page-title col-md-8" data-animation="fadeInDown" data-animation-delay="300">
+            <h1>Projetos</h1>
+            <span>Ver todos os projetos</span>
         </div>
-    </section>
+        <div class="breadcrumb col-md-4" data-animation="fadeInDown" data-animation-delay="800">
+            <ul>
+                <li><a href="/"><i class="fa fa-home"></i></a>
+                </li>
+                <li><a href="{{ route('projeto.index') }}">Projetos</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- END: PAGE TITLE -->
 @endsection
 
 @php
@@ -50,7 +52,7 @@ function trocaMes($mes){
             <div class="post-content post-modern post-3-columns">
                 <!-- Blog image post-->
                 @forelse($projetos as $projeto)
-                    <div class="post-item p-t-30">
+                    <div class="post-item p-t-30" data-animation="fadeInUp" data-animation-delay="0">
                         <div class="post-image">
                             <a href="{{ route('projeto.show', $projeto->id) }}">
                                 <img alt="" src="images/blog/thumb/1.jpg">
