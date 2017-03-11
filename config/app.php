@@ -169,7 +169,6 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Vinkla\Facebook\FacebookServiceProvider::class,
         Chencha\Share\ShareServiceProvider::class,
 
         /*
@@ -232,7 +231,6 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Facebook' => Vinkla\Facebook\Facades\Facebook::class,
         'Share' => Chencha\Share\ShareFacade::class,
     ],
 
