@@ -50,6 +50,13 @@ class ProjetosController extends Controller
      */
     public function store(RequestProjetoForm $request)
     {
+      /*  dd(Request::hasFile('imagem'));
+        if ($img = $request->file('img')) {
+            echo $img;
+        }
+        else {
+            echo "n foi";
+        }*/
         try{
             $projeto = new App\Projeto();
             $projeto->fill($request->only('name', 'resultado', 'descricao', 'instituicao_id', 'eixo_id', 'categoria_id', 'ambito_id', 'cronograma', 'comentarios_prof', 'ancora', 'questao_motriz', 'n_alunos', 'prazo', 'feedback', 'tags'));

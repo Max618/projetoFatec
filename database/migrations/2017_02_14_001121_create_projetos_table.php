@@ -35,6 +35,7 @@ class CreateProjetosTable extends Migration
             $table->integer('total_comp')->default(0);
             $table->integer('total_coments')->default(0);
             $table->integer('total_visualizacao')->default(0);
+            $table->string('arquivo')->nullable();
             $table->integer('instituicao_id');
             $table->timestampsTz();
         });

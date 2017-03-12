@@ -162,6 +162,15 @@ Criar Novo Projeto
                         </div>
                     </div>
                 </div>
+<div class="hr-title hr-long center"><abbr>Parte 5 - Imagem</abbr></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="upper" for="img">Imagem</label>
+                            <input type="file" class="form-control required" name="imagem" id="imagem">
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group text-center">

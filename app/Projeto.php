@@ -8,7 +8,7 @@ class Projeto extends Model
 {
     protected $fillable = [
         'name', 'descricao', 'cronograma', 'comentarios_prof', 'ancora', 'questao_motriz', 'n_alunos', 'prazo', 'feedback',
-        'resultado', 'tags', 'total_visualizacao', 'ambito_id', 'eixo_id', 'categoria_id', 'instituicao_id', 'user_id', 'total_coments', 'total_curtidas', 'total_comp', 'prof_aux_id',
+        'resultado', 'tags', 'total_visualizacao', 'ambito_id', 'eixo_id', 'categoria_id', 'instituicao_id', 'user_id', 'total_coments', 'total_curtidas', 'total_comp', 'prof_aux_id', 'arquivo',
     ];
 
     // N projeto - 1 ambito

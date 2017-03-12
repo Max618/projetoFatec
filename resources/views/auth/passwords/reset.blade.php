@@ -14,9 +14,11 @@ Login
 
                     <div class="panel-body">
                         @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
+                        <p>
+                        <div role="alert" class="alert alert-sucess alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
+                            <strong>{{ session('status') }}</strong> 
+                        </div>
                         @endif
 
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('password.request') }}">
@@ -31,9 +33,11 @@ Login
                                     <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" required autofocus>
 
                                     @if ($errors->has('email'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
+                                    <p>
+                                    <div role="alert" class="alert alert-error alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
+                                        <strong>{{ $errors->first('email') }}</strong> 
+                                    </div>
                                     @endif
                                 </div>
                             </div>
@@ -45,9 +49,11 @@ Login
                                     <input id="password" type="password" class="form-control" name="password" required>
 
                                     @if ($errors->has('password'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
+                                    <p>
+                                    <div role="alert" class="alert alert-sucess alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
+                                        <strong>{{ $errors->first('password') }}</strong> 
+                                    </div>
                                     @endif
                                 </div>
                             </div>
@@ -58,9 +64,11 @@ Login
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
 
                                     @if ($errors->has('password_confirmation'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                        </span>
+                                    <p>
+                                    <div role="alert" class="alert alert-sucess alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong> 
+                                    </div>
                                     @endif
                                 </div>
                             </div>
@@ -68,7 +76,7 @@ Login
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Reset Password
+                                        Resetar Senha
                                     </button>
                                 </div>
                             </div>

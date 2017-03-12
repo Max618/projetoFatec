@@ -20,9 +20,12 @@ Registrar
                                     <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus placeholder="Nome">
 
                                     @if ($errors->has('name'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
+                                    <p>
+                                    <div role="alert" class="alert alert-danger alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
+                                        <strong>{{ $errors->first('name') }}</strong> 
+                                    </div>
+                                    </p>
                                     @endif
                             </div>
 
@@ -32,9 +35,12 @@ Registrar
                                     <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required placeholder="E-mail">
 
                                     @if ($errors->has('email'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
+                                    <p>
+                                    <div role="alert" class="alert alert-danger alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
+                                        <strong>{{ $errors->first('email') }}</strong> 
+                                    </div>
+                                    </p>
                                     @endif
                             </div>
 
@@ -44,9 +50,12 @@ Registrar
                                     <input id="password" type="password" class="form-control" name="password" required placeholder="Senha">
 
                                     @if ($errors->has('password'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
+                                    <p>
+                                    <div role="alert" class="alert alert-danger alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
+                                        <strong>{{ $errors->first('password') }}</strong> 
+                                    </div>
+                                    </p>
                                     @endif
                             </div>
 

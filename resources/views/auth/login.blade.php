@@ -14,27 +14,32 @@ Login
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                             {{ csrf_field() }}
 
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('email') ? ' has-error has-feedback' : '' }}">
                                 <label for="email" class="sr-only">E-Mail Address</label>
 
                                     <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus placeholder="Email">
 
                                     @if ($errors->has('email'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
+                                    <p>
+                                    <div role="alert" class="alert alert-danger alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
+                                        <strong>{{ $errors->first('email') }}</strong> 
+                                    </div>
+                                    </p>
                                     @endif
                             </div>
 
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('password') ? ' has-error has-feedback' : '' }}">
                                 <label for="password" class="sr-only">Password</label>
 
                                     <input id="password" type="password" class="form-control" name="password" required placeholder="Password">
 
                                     @if ($errors->has('password'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
+                                    <div role="alert" class="alert alert-danger alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
+                                        <strong>{{ $errors->first('password') }}</strong> 
+                                    </div>
+                                    </p>
                                     @endif
                             </div>
 

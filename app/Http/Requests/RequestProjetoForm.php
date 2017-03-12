@@ -40,7 +40,8 @@ class RequestProjetoForm extends FormRequest
             'tags' => 'required',
             'resultado' => 'required',
             'name_prof' => 'nullable', 
-            'email' => 'nullable',
+            'email' => 'nullable', 
+            //'img' => 'image',
         ];
     }
 
@@ -61,7 +62,7 @@ class RequestProjetoForm extends FormRequest
             'prazo.required' => 'O campo prazo é obrigatório',
             'feedback.required' => 'O campo feedback é obrigatório', 
             'tags.required' => 'O campo tags é obrigatório',
-            'resultado.required' => 'O campo resultado é obrigatório',
+            'resultado.required' => 'O campo resultado é obrigatório', 
         ];
     }
 }
