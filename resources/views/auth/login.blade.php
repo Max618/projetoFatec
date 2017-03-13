@@ -72,4 +72,5 @@ Login
     <!--END: Social Login Form-->
             </div>
     </div>
+</section>
 @endsection

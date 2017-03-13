@@ -8,12 +8,11 @@ use Share;
 
 class SocialController extends Controller
 {
-	/**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+	public function __construct() 
+    {
+        $this->middleware('auth')->except('compartilhar');
+    }
+
     public function comentar(Request $request) 
     {
         try{

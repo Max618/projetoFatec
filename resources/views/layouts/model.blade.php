@@ -116,7 +116,16 @@
                         <div class="container">
                             <nav id="mainMenu" class="main-menu mega-menu">
                                 <ul class="main-menu nav nav-pills">
-                                    <li><a href="{{ route('projeto.index') }}">Projetos</a></li>
+                                    <li class="dropdown"><a href="{{ route('projeto.index') }}">Projetos</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{{ route('projeto.index') }}" class="icon-right"><span>Ver Projetos <i class="fa fa-list-ul"></i></span></a>
+                                            </li>
+                                            @if (!Auth::guest())
+                                                <li><a href="{{ route('projeto.create') }}" class="icon-right"><span>Novo Projeto <i class="fa fa-edit"></i></span></a>
+                                                </li>
+                                            @endif
+                                        </ul>
+                                    </li>
                                     <li><a href="">Sobre</a></li>
                                     <li><a href="">Ajuda</a></li>
 

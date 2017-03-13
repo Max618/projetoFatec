@@ -24,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = auth()->user();
+        $projetos = $user->projetos;
+        return view('home')->with(compact('projetos'));
     }
 }

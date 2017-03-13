@@ -26,7 +26,7 @@ Logado
 @endsection
 
 @section('content')
-<section class="p-t-60">
+<section>
     @if(Session::has('sucesso'))
         <div class="container">
             <div role="alert" class="alert alert-success alert-dismissible">
@@ -42,22 +42,82 @@ Logado
             </div>
         </div>
     @endif
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Dashboard</div>
 
-                    <div class="panel-body">
-                        You are logged in!
-                        <br>
-                        <a href="{{ route('projeto.create') }}">Novo</a>
-                        <br>
-                        <a href="{{route('projeto.index')}}">Ver Todos</a>
-                    </div>
+    <!-- MEUS PROJETOS -->
+        <div class="heading heading-center">
+            <h2>Meus Projetos</h2>
+        </div>
+
+        @if(count($projetos) >= 5)
+            <div class="container portfolio">
+                <div class="carousel" data-lightbox-type="gallery">
+                        @foreach($projetos as $projeto)
+                            <div class="portfolio-item design artwork">
+                                <div class="portfolio-image effect social-links">
+                                    <img src="images/portfolio/1.jpg" alt="">
+                                    <div class="image-box-content">
+                                        <p>
+                                            <a href="images/portfolio/1.jpg" data-lightbox-type="image" title="{{ $projeto->name }}"><i class="fa fa-expand"></i></a>
+                                            <a href="{{ route('projeto.show', $projeto->id) }}"><i class="fa fa-link"></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-description">
+                                    <h4 class="title">{{ $projeto->name }}</h4>
+                                    <p>
+                                        {{ $projeto->total_curtidas }} <i class="fa fa-thumbs-o-up"></i> 
+                                        {{ $projeto->total_coments }} <i class="fa fa-comments-o"></i> 
+                                        {{ $projeto->total_comp }} <i class="fa fa-share-alt"></i> 
+                                        {{ $projeto->total_visualizacao }} <i class="fa fa-eye"></i>
+                                    </p>
+                                </div>
+                                <div class="portfolio-date">
+                                   
+                                </div>
+                            </div>
+                        @endforeach
                 </div>
             </div>
-        </div>
-    </div>
+        @elseif(count($projetos) < 5 and count($projetos) > 0)
+            <div class="container portfolio">
+                <div id="isotope" class="isotope portfolio-items" data-isotope-item-space="2" data-isotope-mode="masonry" data-isotope-col="4" data-isotope-item=".portfolio-item">
+                    @foreach($projetos as $projeto)
+                        <div class="portfolio-item design beauty">
+                            <div class="portfolio-image effect social-links">
+                                <img src="images/portfolio/2.jpg" alt="">
+                                <div class="image-box-content">
+                                    <p>
+                                        <a href="images/portfolio/1.jpg" data-lightbox-type="image" title="{{ $projeto->name }}"><i class="fa fa-expand"></i></a>
+                                        <a href="{{ route('projeto.show', $projeto->id) }}"><i class="fa fa-link"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="portfolio-description">
+                                <h4 class="title">{{ $projeto->name }}</h4>
+                                <p>
+                                    {{ $projeto->total_curtidas }} <i class="fa fa-thumbs-o-up"></i> 
+                                    {{ $projeto->total_coments }} <i class="fa fa-comments-o"></i> 
+                                    {{ $projeto->total_comp }} <i class="fa fa-share-alt"></i> 
+                                    {{ $projeto->total_visualizacao }} <i class="fa fa-eye"></i>
+                                </p>
+
+                            </div>
+                            <div class="portfolio-date">
+                                
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @else
+            <div class="jumbotron jumbotron-fullwidth background-colored text-light m-b-0">
+
+                    <h3>O que!?</h3>
+                    <p>Você ainda não tem um projeto cadastrado.</p>
+                    <a class="button transparent icon-right" href="{{ route('projeto.create') }}"><span>Novo Projeto</span></a>
+                
+            </div>
+        @endif
+    <!-- END: MEUS PROJETOS -->
 </section>
 @endsection
