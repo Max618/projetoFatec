@@ -143,8 +143,9 @@ function trocaMes($mes){
                             </div>
 
                             <div class="post-comments">
+                                    <a href="{{ route('social.curtir', $projeto->id) }}">
                                     <i class="fa fa-thumbs-o-up"></i>
-                                    <span class="post-comments-number">{{ $projeto->total_curtidas }}</span>
+                                    <span class="post-comments-number">{{ $projeto->total_curtidas }}</span></a>
                             </div>
                             <div class="post-comments">
                                     <a class="scroll-to" href="#comentar">
@@ -171,6 +172,26 @@ function trocaMes($mes){
                     </div>
                 </div>
                 
+                <!-- Executar -->
+                <div id='executar'>
+                    <div class="heading">
+                        <h4 class="executar-title">Executar</h4>
+                    </div>
+                    <form action="{{ route('social.executar', $projeto->id) }}" method="POST">
+                    {{ csrf_field() }}
+                        <div class="radio">
+                            <label>
+                                <input type="radio" value="1" name="optionsRadios" id="optionsRadios1" checked> Executar sem mudanças </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" value="2" name="optionsRadios" id="optionsRadios2"> Executar com mudanças </label>
+                        </div>
+                        <input type="submit" class="btn btn-primary">
+                    </form>
+                </div>
+                <!-- END: Executar -->
+
                 <!-- Comments-->
                 <div id="comments" class="comments">
                     <div class="heading">

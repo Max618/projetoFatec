@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App;
 
 class HomeController extends Controller
 {
@@ -26,6 +26,8 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         $projetos = $user->projetos;
-        return view('home')->with(compact('projetos'));
+        $curtidas = App\Like::where('user_id',$user->id)->where('like', 'true');
+        //return $curtidas;
+        return view('home')->with(compact('projetos','curtidas'));
     }
 }

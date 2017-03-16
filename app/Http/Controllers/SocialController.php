@@ -28,11 +28,53 @@ class SocialController extends Controller
     		return redirect('/');
     	}
     }
+
     public function compartilhar($provider, $id) 
     {
         $url = env('APP_URL')."/projeto/".$id;
         return redirect(Share::load( $url, 'Olhe este projeto!')->$provider());
         //return redirect(Share::load('http://www.example.com', 'Olhe este projeto!', session('socialUser')->getAvatar())->$provider());
 
+    }
+
+    public function executar(Request $request, $id)
+    {
+        $projeto = App\Projeto::find($id);
+        $user = auth()->user();
+        //dd($request->only('optionsRadios'));
+        $valor = $request->input('optionsRadios');
+        //dd($valor);
+        if($valor == 1){
+            $execucao = $projeto->execucao()->create([
+                    'user_id' => $user->id,
+                    'projeto_id' => $id,
+                    'instituicao' => 1,
+                ]);
+                dd($user->execucao()->create([
+                    'user_id' => $user->id,
+                    'execucao_id' => $execucao->id,
+                    ]));
+            return 'Valor = 1, sem mudanças';
+        }
+        return 'Valor = 2, com mudanças';
+        //return view('projeto.form-executar')->with('mensagem','aki');
+    }
+//CURTIR V1
+    public function curtir($projeto_id, $acao = true)
+    {
+        $user = auth()->user();
+        $like = App\Like::updateOrCreate([
+                'projeto_id' => $projeto_id,
+                'user_id' => $user->id,
+                'like' => $acao,
+            ]);
+        $projeto = App\Projeto::find($projeto_id);
+        $projeto->total_curtidas += 1;
+        $projeto->save();
+        if ($acao == 'true')
+        {
+            return response()->json(['retorno' => 'true']);
+        }
+        return response()->json(['retorno' => 'false']);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExecucoesTable extends Migration
+class CreateExecucaosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateExecucoesTable extends Migration
      */
     public function up()
     {
-        Schema::create('execucoes', function (Blueprint $table) {
+        Schema::create('execucaos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('projeto_id');
-            $table->integer('instituicao_id');
+            $table->integer('instituicao_id')->default('1');
             $table->timestampsTz();
         });
     }
@@ -29,6 +29,6 @@ class CreateExecucoesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('execucoes');
+        Schema::dropIfExists('execucaos');
     }
 }

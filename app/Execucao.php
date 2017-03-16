@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Execucao extends Model
 {
     protected $fillable = [
-        //
+        'user_id', 'projeto_id', 'instituicao_id'
     ];
 
     // N - N
