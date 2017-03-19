@@ -13,7 +13,7 @@ class Execucao extends Model
     // N - N
     public function user()
     {
-    	return $this->belongsToMany(User::class, 'execucao_user');
+    	return $this->belongsTo(User::class);
     }
 
     // N - N
@@ -25,6 +25,6 @@ class Execucao extends Model
     // N - N
     public function instituicao()
     {
-    	return $this->belongsToMany(Instituicao::class, 'execucao_instituicao');
+    	return $this->belongsTo(Instituicao::class);
     }
 }

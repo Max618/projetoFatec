@@ -42,19 +42,16 @@ class SocialController extends Controller
         $projeto = App\Projeto::find($id);
         $user = auth()->user();
         //dd($request->only('optionsRadios'));
+        $execucao = App\Execucao::find(6);
         $valor = $request->input('optionsRadios');
         //dd($valor);
         if($valor == 1){
             $execucao = $projeto->execucao()->create([
                     'user_id' => $user->id,
                     'projeto_id' => $id,
-                    'instituicao' => 1,
+                    'instituicao_id' => $user->instituicao_id,
                 ]);
-                dd($user->execucao()->create([
-                    'user_id' => $user->id,
-                    'execucao_id' => $execucao->id,
-                    ]));
-            return 'Valor = 1, sem mudanças';
+            return redirect()->route('home')->with('sucesso', 'Projeto executado com sucesso!');
         }
         return 'Valor = 2, com mudanças';
         //return view('projeto.form-executar')->with('mensagem','aki');

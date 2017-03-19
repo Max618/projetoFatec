@@ -17,7 +17,7 @@ class CreateExecucaosTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('projeto_id');
-            $table->integer('instituicao_id')->default('1');
+            $table->integer('instituicao_id');
             $table->timestampsTz();
         });
     }
