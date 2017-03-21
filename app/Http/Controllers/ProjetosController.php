@@ -35,7 +35,6 @@ class ProjetosController extends Controller
     public function create()
     {
         $ambitos = App\Ambito::all()->pluck('name','id');
-        //dd($ambitos);
         $categorias = App\Categoria::all()->pluck('name','id');
         $eixos = App\Eixo::all()->pluck('name','id');
         $instituicoes = App\Instituicao::all()->pluck('name','id');

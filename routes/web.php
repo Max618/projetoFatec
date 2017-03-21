@@ -30,6 +30,7 @@ Route::post('/comentar','SocialController@comentar')->name('social.comentar');
 Route::get('/compartilhar/{provider}/{id}','SocialController@compartilhar')->name('social.compartilhar');
 Route::get('executar/projeto/{id}', 'SocialController@verExecutar')->name('social.mudancas');
 Route::post('executar/{id}', 'SocialController@executar')->name('social.executar');
+Route::post('mudar/{projeto_id}' ,'SocialController@executarMudancas')->name('social.executar-mudancas');
 
 //Curtir V1
 Route::get('curtir/{projeto_id}', 'SocialController@curtir')->name('social.curtir');

@@ -41,10 +41,7 @@ class SocialController extends Controller
     {
         $projeto = App\Projeto::find($id);
         $user = auth()->user();
-        //dd($request->only('optionsRadios'));
-        $execucao = App\Execucao::find(6);
         $valor = $request->input('optionsRadios');
-        //dd($valor);
         if($valor == 1){
             $execucao = $projeto->execucao()->create([
                     'user_id' => $user->id,
@@ -53,10 +50,13 @@ class SocialController extends Controller
                 ]);
             return redirect()->route('home')->with('sucesso', 'Projeto executado com sucesso!');
         }
-        return 'Valor = 2, com mudanças';
-        //return view('projeto.form-executar')->with('mensagem','aki');
+        $ambitos = App\Ambito::all()->pluck('name','id');
+        $categorias = App\Categoria::all()->pluck('name','id');
+        $eixos = App\Eixo::all()->pluck('name','id');
+        $instituicoes = App\Instituicao::all()->pluck('name','id');
+        return view('projeto.form-executar')->with(compact('projeto','ambitos', 'categorias', 'eixos', 'instituicoes'));
     }
-//CURTIR V1
+    //CURTIR V1
     public function curtir($projeto_id, $acao = true)
     {
         $user = auth()->user();
@@ -73,5 +73,10 @@ class SocialController extends Controller
             return response()->json(['retorno' => 'true']);
         }
         return response()->json(['retorno' => 'false']);
+    }
+
+    public function executarMudancas(Request $request, $projeto_id)
+    {
+        dd($request);
     }
 }
