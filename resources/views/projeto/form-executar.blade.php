@@ -131,7 +131,7 @@ Executar Projeto
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="upper" for="comentarios_prof">Comentários</label>
-                            <textarea class="form-control required" name="comentarios_prof" rows="5" placeholder="Comentários" id="comentarios_prof" aria-required="true">{{ $projeto->comentarios }}</textarea>
+                            <textarea class="form-control required" name="comentarios_prof" rows="5" placeholder="Comentários" id="comentarios_prof" aria-required="true">{{ $projeto->comentarios_prof }}</textarea>
                         </div>
                     </div>
                 </div>

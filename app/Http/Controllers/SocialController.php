@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 use Share;
+use App\Http\Requests\RequestProjetoForm;
 
 class SocialController extends Controller
 {
@@ -75,8 +76,20 @@ class SocialController extends Controller
         return response()->json(['retorno' => 'false']);
     }
 
-    public function executarMudancas(Request $request, $projeto_id)
+    public function executarMudancas(RequestProjetoForm $request, $projeto_id)
     {
-        dd($request);
+        $projeto = App\Projeto::find($projeto_id);
+        $user = auth()->user();
+        $versao = App\VersaoProj::create(['projeto_anterior_id' => $projeto_id, 'versao' => $projeto->versao['versao']+1]);
+        $novoProjeto = new App\Projeto();
+        $novoProjeto->fill($request->only('name', 'resultado', 'descricao', 'instituicao_id', 'eixo_id', 'categoria_id', 'ambito_id', 'cronograma', 'comentarios_prof', 'ancora', 'questao_motriz', 'n_alunos', 'prazo', 'feedback', 'tags'));
+        $novoProjeto->fill(['versao_proj_id' => $versao->id, 'user_id' => $user->id]);
+        $novoProjeto->save();
+        $execucao = $novoProjeto->execucao()->create([
+                    'user_id' => $user->id,
+                    'projeto_id' => $novoProjeto->id,
+                    'instituicao_id' => $user->instituicao_id,
+                ]);
+        return redirect()->route('home')->with(['sucesso' => 'Projeto executado com Sucesso!']);
     }
 }

@@ -37,6 +37,8 @@ class CreateProjetosTable extends Migration
             $table->integer('total_visualizacao')->default(0);
             $table->string('arquivo')->nullable();
             $table->integer('instituicao_id');
+            $table->string('arquivo', 100)->nullable;
+            $table->integer('versao_proj_id')->nullable();
             $table->timestampsTz();
         });
     }
