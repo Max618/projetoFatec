@@ -33,4 +33,7 @@ Route::post('executar/{id}', 'SocialController@executar')->name('social.executar
 Route::post('mudar/{projeto_id}' ,'SocialController@executarMudancas')->name('social.executar-mudancas');
 
 //Curtir V1
-Route::get('curtir/{projeto_id}', 'SocialController@curtir')->name('social.curtir');
+Route::get('curtir/{projeto_id}/{acao?}', 'SocialController@curtir')->name('social.curtir');
+
+//Route::post('curtir', 'SocialController@curtir')->name('social.curtir');
+

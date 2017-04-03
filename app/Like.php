@@ -14,6 +14,6 @@ class Like extends Model
 
     public function projeto()
     {
-    	
+    	return $this->belongsTo('App\Projeto');	
     }
 }

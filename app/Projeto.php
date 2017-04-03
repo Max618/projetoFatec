@@ -62,4 +62,9 @@ class Projeto extends Model
     {
         return $this->belongsTo('App\VersaoProj', 'versao_proj_id');
     }
+
+    public function curtida()
+    {
+        return $this->hasMany('App\Like');
+    }
 }

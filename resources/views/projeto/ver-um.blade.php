@@ -143,10 +143,17 @@ function trocaMes($mes){
                             </div>
 
                             <div class="post-comments">
-                                    <a href="{{ route('social.curtir', $projeto->id) }}">
+                                @if($like)
+                                    <a href="{{ route('social.curtir', ['projeto_id' => $projeto->id, 'acao' => !$like->like]) }}">
+                                    <i class="fa fa-thumbs{{ $like->like ? '-up' : '-o-up' }}"></i>
+                                    <span class="post-comments-number">{{ $projeto->total_curtidas }}</span></a>
+                                @else
+                                    <a href="{{ route('social.curtir', ['projeto_id' => $projeto->id, 'acao' => true]) }}">
                                     <i class="fa fa-thumbs-o-up"></i>
                                     <span class="post-comments-number">{{ $projeto->total_curtidas }}</span></a>
+                                @endif
                             </div>
+
                             <div class="post-comments">
                                     <a class="scroll-to" href="#comentar">
                                     <i class="fa fa-comments-o"></i>

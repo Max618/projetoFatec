@@ -83,6 +83,7 @@ class ProjetosController extends Controller
      */
     public function show($id)
     {
+        $user = auth()->user();
         $projeto = App\Projeto::find($id);
         if(! Cache::has($id))
         {
@@ -90,7 +91,8 @@ class ProjetosController extends Controller
             $projeto->total_visualizacao+=1;
             $projeto->save();
         }
-        return  view('projeto.ver-um')->with(compact('projeto'));
+        $like = App\Like::where('projeto_id', $projeto->id)->where('user_id', $user->id)->first();
+        return  view('projeto.ver-um')->with(compact('projeto','like'));
     }
 
     /**

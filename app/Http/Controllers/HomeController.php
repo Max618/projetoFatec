@@ -26,8 +26,11 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         $projetos = $user->projetos;
-        $curtidas = App\Like::where('user_id',$user->id)->where('like', 'true');
-        //return $curtidas;
+        $curtidas = App\Like::where('user_id',$user->id)->where('like', 1)->get();
+        //$curtidas = $curtidas->get(0);
+        //$curtidas = App\Like::find(1);
+        //dd($curtidas);
+        //dd($curtidas->projeto['name']);
         return view('home')->with(compact('projetos','curtidas'));
     }
 }

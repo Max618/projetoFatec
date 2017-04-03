@@ -124,28 +124,28 @@ Logado
     <div class="heading heading-center">
             <h2>Projetos que Gostei</h2>
     </div>
-
+    
     @if(count($curtidas) >= 5)
             <div class="container portfolio">
                 <div class="carousel" data-lightbox-type="gallery">
-                        @foreach($projetos as $projeto)
+                        @foreach($curtidas as $curtida)
                             <div class="portfolio-item design artwork">
                                 <div class="portfolio-image effect social-links">
                                     <img src="images/portfolio/1.jpg" alt="">
                                     <div class="image-box-content">
                                         <p>
-                                            <a href="images/portfolio/1.jpg" data-lightbox-type="image" title="{{ $projeto->name }}"><i class="fa fa-expand"></i></a>
-                                            <a href="{{ route('projeto.show', $projeto->id) }}"><i class="fa fa-link"></i></a>
+                                            <a href="images/portfolio/1.jpg" data-lightbox-type="image" title="{{ $curtida->projeto['name'] }}"><i class="fa fa-expand"></i></a>
+                                            <a href="{{ route('projeto.show', $curtida->projeto['id']) }}"><i class="fa fa-link"></i></a>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="portfolio-description">
-                                    <h4 class="title">{{ $projeto->name }}</h4>
+                                    <h4 class="title">{{ $curtida->projeto['name'] }}</h4>
                                     <p>
-                                        {{ $projeto->total_curtidas }} <i class="fa fa-thumbs-o-up"></i> 
-                                        {{ $projeto->total_coments }} <i class="fa fa-comments-o"></i> 
-                                        {{ $projeto->total_comp }} <i class="fa fa-share-alt"></i> 
-                                        {{ $projeto->total_visualizacao }} <i class="fa fa-eye"></i>
+                                        {{ $curtida->projeto['total_curtidas'] }} <i class="fa fa-thumbs-o-up"></i> 
+                                        {{ $curtida->projeto['total_coments'] }} <i class="fa fa-comments-o"></i> 
+                                        {{ $curtida->projeto['total_comp'] }} <i class="fa fa-share-alt"></i> 
+                                        {{ $curtida->projeto['total_visualizacao'] }} <i class="fa fa-eye"></i>
                                     </p>
                                 </div>
                                 <div class="portfolio-date">
@@ -158,24 +158,24 @@ Logado
         @elseif(count($curtidas) < 5 and count($curtidas) > 0)
             <div class="container portfolio">
                 <div id="isotope" class="isotope portfolio-items" data-isotope-item-space="2" data-isotope-mode="masonry" data-isotope-col="4" data-isotope-item=".portfolio-item">
-                    @foreach($projetos as $projeto)
+                    @foreach($curtidas as $curtida)
                         <div class="portfolio-item design beauty">
                             <div class="portfolio-image effect social-links">
                                 <img src="images/portfolio/2.jpg" alt="">
                                 <div class="image-box-content">
                                     <p>
-                                        <a href="images/portfolio/1.jpg" data-lightbox-type="image" title="{{ $projeto->name }}"><i class="fa fa-expand"></i></a>
-                                        <a href="{{ route('projeto.show', $projeto->id) }}"><i class="fa fa-link"></i></a>
+                                        <a href="images/portfolio/1.jpg" data-lightbox-type="image" title="{{ $curtida->projeto['name'] }}"><i class="fa fa-expand"></i></a>
+                                        <a href="{{ route('projeto.show',$curtida->projeto['id']) }}"><i class="fa fa-link"></i></a>
                                     </p>
                                 </div>
                             </div>
                             <div class="portfolio-description">
-                                <h4 class="title">{{ $projeto->name }}</h4>
+                                <h4 class="title">{{ $curtida->projeto['name'] }}</h4>
                                 <p>
-                                    {{ $projeto->total_curtidas }} <i class="fa fa-thumbs-o-up"></i> 
-                                    {{ $projeto->total_coments }} <i class="fa fa-comments-o"></i> 
-                                    {{ $projeto->total_comp }} <i class="fa fa-share-alt"></i> 
-                                    {{ $projeto->total_visualizacao }} <i class="fa fa-eye"></i>
+                                    {{ $curtida->projeto['total_curtidas'] }} <i class="fa fa-thumbs-o-up"></i> 
+                                    {{ $curtida->projeto['total_coments'] }} <i class="fa fa-comments-o"></i> 
+                                    {{ $curtida->projeto['total_comp'] }} <i class="fa fa-share-alt"></i> 
+                                    {{ $curtida->projeto['total_visualizacao'] }} <i class="fa fa-eye"></i>
                                 </p>
 
                             </div>
