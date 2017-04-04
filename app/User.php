@@ -43,7 +43,7 @@ class User extends Authenticatable
     // N - N
     public function execucao()
     {
-        return $this->hasMany(Execucao::class);
+        return $this->hasMany('App\Execucao');
     }
 
     // 1 user - N projetos

@@ -27,10 +27,21 @@ class HomeController extends Controller
         $user = auth()->user();
         $projetos = $user->projetos;
         $curtidas = App\Like::where('user_id',$user->id)->where('like', 1)->get();
-        //$curtidas = $curtidas->get(0);
-        //$curtidas = App\Like::find(1);
-        //dd($curtidas);
-        //dd($curtidas->projeto['name']);
-        return view('home')->with(compact('projetos','curtidas'));
+        $execucoes = $user->execucao;
+        foreach ($execucoes as $execucao) {
+            $projetos_ex[] = App\Projeto::find($execucao['projeto_id']);
+        }
+        $projetos_ex = array_unique($projetos_ex);
+        foreach ($projetos as $projeto) {
+            foreach ($projeto->execucao as $ex) {
+                $execucoes_projetos[] = $ex;
+                //$users[] = $ex->user['name'];
+                //dd($ex->projeto()->first());
+                //dd($execucoes_projetos);
+                //dd($ex->projeto()->pluck('name'));
+            }
+        }
+        //dd($users);
+        return view('home')->with(compact('projetos','curtidas','projetos_ex','execucoes_projetos'));
     }
 }
