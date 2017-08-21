@@ -15,7 +15,7 @@ class CreateProjetosTable extends Migration
     {
         Schema::create('projetos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->string('name', 60);
             $table->string('descricao', 30);
             $table->integer('ambito_id');
@@ -30,15 +30,14 @@ class CreateProjetosTable extends Migration
             $table->text('feedback');
             $table->text('resultado')->nullable();
             $table->string('tags', 150);
-            $table->integer('prof_aux_id')->nullable();
+            $table->integer('prof_aux_id')->unsigned()->nullable();
             $table->integer('total_curtidas')->default(0);
             $table->integer('total_comp')->default(0);
             $table->integer('total_coments')->default(0);
             $table->integer('total_visualizacao')->default(0);
             $table->string('arquivo')->nullable();
-            $table->integer('instituicao_id');
-            $table->string('arquivo', 100)->nullable;
-            $table->integer('versao_proj_id')->nullable();
+            $table->integer('instituicao_id')->unsigned()->nullable();
+            $table->integer('versao_proj_id')->unsigned()->nullable();
             $table->timestampsTz();
         });
     }

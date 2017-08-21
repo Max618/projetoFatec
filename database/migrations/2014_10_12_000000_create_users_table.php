@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('cidade', 30)->nullable();
             $table->string('estado', 30)->nullable();
             $table->string('avatar', 200)->nullable();
-            $table->integer('instituicao_id')->nullable();
+            $table->integer('instituicao_id')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestampsTz();
         });
