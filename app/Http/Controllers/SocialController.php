@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App;
 use Share;
 use App\Http\Requests\RequestProjetoForm;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class SocialController extends Controller
 {
@@ -108,5 +109,12 @@ class SocialController extends Controller
         {
             return redirect()->route('home')->with(['erro' => $e]);
         }
+    }
+
+    public function save($id)
+    {
+        $projeto = App\Projeto::find($id);
+        $pdf = PDF::loadView('projeto.save', compact('projeto'));
+        return $pdf->download($projeto->name.'.pdf');
     }
 }

@@ -166,6 +166,7 @@ function trocaMes($mes){
                                         <li class='social-facebook'><a target='_blank' href='{{ route('social.compartilhar', ['provider' =>'facebook', 'id' => $projeto->id] ) }}'><i class='fa fa-facebook'></i></a></li>
                                         <li class='social-twitter'><a target='_blank' href='{{ route('social.compartilhar', ['provider' =>'twitter', 'id' => $projeto->id] ) }}'><i class='fa fa-twitter'></i></a></li>
                                         <li class='social-gplus'><a target='_blank' href='{{ route('social.compartilhar', ['provider' =>'gplus', 'id' => $projeto->id] ) }}'><i class='fa fa-google-plus'></i></a></li>
+                                        <li class='social-gplus'><a target='_blank' href='{{ route('social.save', $projeto->id) }}'>pdf</a></li>
                                     </ul>
                                     </div>
                                     ">

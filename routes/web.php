@@ -37,3 +37,5 @@ Route::get('curtir/{projeto_id}/{acao?}', 'SocialController@curtir')->name('soci
 
 //Route::post('curtir', 'SocialController@curtir')->name('social.curtir');
 
+Route::get('{id}/salvar', 'SocialController@save')->name('social.save');
+

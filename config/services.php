@@ -38,13 +38,13 @@ return [
     'twitter' => [
     'client_id' => '4c5Xfre3nH28sM04og9ACmM3r',
     'client_secret' => 'RSr62KAPorZDaJikwJs8pnJ0pr5BpplDTpugBBTjEufD53JFzi',
-    'redirect' => 'http://localhost:8000/login-twitter/callback',
+    'redirect' => 'fatec.app/login-twitter/callback',
     ],
 
     'facebook' => [
     'client_id' => '161822934295460',
     'client_secret' => 'c494a888b39511c2aa05d7a672971f29',
-    'redirect' => 'http://localhost:8000/login-facebook/callback',
+    'redirect' => 'http://fatec.app/login-facebook/callback',
     ],
 
     'google' => [
