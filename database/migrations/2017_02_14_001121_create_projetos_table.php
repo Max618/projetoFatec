@@ -17,7 +17,7 @@ class CreateProjetosTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->nullable();
             $table->string('name', 60);
-            $table->string('descricao', 30);
+            $table->string('descricao', 100);
             $table->integer('ambito_id');
             $table->integer('categoria_id');
             $table->integer('eixo_id');

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Tag;
 
 class Projeto extends Model
 {
@@ -66,5 +67,14 @@ class Projeto extends Model
     public function curtida()
     {
         return $this->hasMany('App\Like');
+    }
+
+    public function tags(){
+        $tags = $this->attributes['tags'];
+        $tags = explode("/",$tags);
+        foreach ($tags as $tag){
+            Tag::firstOrCreate(['name' => $tag,'descricao' => 'teste']);
+        }
+        return $tags;
     }
 }

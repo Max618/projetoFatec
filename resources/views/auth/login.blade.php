@@ -8,7 +8,7 @@ Login
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-md-5 col-md-offset-4">
                 <div class="panel ">
                     <div class="panel-body"><h3>Login</h3>
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
@@ -32,7 +32,7 @@ Login
                             <div class="form-group{{ $errors->has('password') ? ' has-error has-feedback' : '' }}">
                                 <label for="password" class="sr-only">Password</label>
 
-                                    <input id="password" type="password" class="form-control" name="password" required placeholder="Password">
+                                    <input id="password" type="password" class="form-control" name="password" required placeholder="Senha">
 
                                     @if ($errors->has('password'))
                                     <div role="alert" class="alert alert-danger alert-dismissible">
@@ -61,7 +61,7 @@ Login
 
     <!--END: Login Form-->
     <!--Social Login Form-->
-                    <div class="hr-title hr-long center"><abbr>Ou</abbr></div>
+                    <div class="hr-title hr-long center"></div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="panel-body">

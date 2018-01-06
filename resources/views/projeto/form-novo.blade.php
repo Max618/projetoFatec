@@ -4,32 +4,9 @@
 Criar Novo Projeto
 @endsection
 
-@section('page-header')
-<!-- PAGE TITLE -->
-<section id="page-title">
-    <div class="container">
-        <div class="page-title col-md-8" data-animation="fadeInDown" data-animation-delay="300">
-            <h1>Cadastrar Novo Projeto</h1>
-            <span>Preencha o Formulário do Novo Projeto</span>
-        </div>
-        <div class="breadcrumb col-md-4" data-animation="fadeInDown" data-animation-delay="800">
-            <ul>
-                <li><a href="/"><i class="fa fa-home"></i></a>
-                </li>
-                <li><a href="{{ route('home') }}">Home</a>
-                </li>
-                <li><a href="{{ route('projeto.index') }}">Projetos</a>
-                </li>
-                <li><a href="{{ route('projeto.create') }}">Novo Projeto</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</section>
-<!-- END: PAGE TITLE -->
-@endsection
 
 @section('content')
+<section id="page-content">
 @if(count($errors->all()) > 0)
     @foreach($errors->all() as $error)
         <div class="container">
@@ -40,10 +17,25 @@ Criar Novo Projeto
         </div>
     @endforeach
 @endif
+<div class="container">
+    <!-- Page title -->
+    <div class="page-title">
+        <h1>Cadastrar Novo Projeto</h1>
+        <div class="breadcrumb float-left">
+            <ul>
+                <li><a href="{{ route('home') }}">Home</a>
+                </li>
+                <li><a href="{{ route('projeto.index') }}">Projetos</a>
+                </li>
+                <li><a class="active" href="{{ route('projeto.create') }}">Novo Projeto</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end: Page title -->
 <!--Castrar Projeto Form-->
-<div class="hr-title hr-long center"><abbr>Parte 1</abbr></div>
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12 ">
            <!-- <form action="{{ route('projeto.store') }}" method="POST"> -->
            {!! Form::open(['route' => 'projeto.store', 'methood' => 'post']) !!}
             {{ csrf_field() }}
@@ -75,7 +67,6 @@ Criar Novo Projeto
                         </div>
                     </div>
                 </div>
-<div class="hr-title hr-long center"><abbr>Parte 2</abbr> </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -104,7 +95,6 @@ Criar Novo Projeto
                         </div>
                     </div>
                 </div>
-<div class="hr-title hr-long center"><abbr>Parte 3</abbr></div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -115,7 +105,7 @@ Criar Novo Projeto
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="upper" for="prazo">Prazo</label>
-                            <input type="number" class="form-control required" name="prazo" placeholder="Número de Aulas" id="prazo" aria-required="true">
+                            <input type="text" class="form-control required" name="prazo" placeholder="Número de Aulas" id="prazo" aria-required="true">
                         </div>
                     </div>
                 </div>
@@ -123,7 +113,7 @@ Criar Novo Projeto
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="upper" for="n_alunos">Número de Alunos</label>
-                            <input type="number" class="form-control required" name="n_alunos" placeholder="Número Alunos" id="n_alunos" aria-required="true">
+                            <input type="text" class="form-control required" name="n_alunos" placeholder="Número Alunos" id="n_alunos" aria-required="true">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -153,7 +143,6 @@ Criar Novo Projeto
                        <textarea class="form-control required" name="resultado" rows="6" placeholder="Resultado" id="resultado" aria-required="true"></textarea>
                    </div>
                </div>
-<div class="hr-title hr-long center"><abbr>Parte 4 - Prof aux</abbr></div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -168,7 +157,6 @@ Criar Novo Projeto
                         </div>
                     </div>
                 </div>
-<div class="hr-title hr-long center"><abbr>Parte 5 - Imagem</abbr></div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -180,7 +168,7 @@ Criar Novo Projeto
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group text-center">
-                            <button class="btn btn-primary icon-left" type="submit"><i class="fa fa-paper-plane"></i> Enviar Projeto</button>
+                            <button class="btn" type="submit"><i class="fa fa-paper-plane"></i> Enviar Projeto</button>
                         </div>
                     </div>
                 </div>

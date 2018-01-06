@@ -55,11 +55,11 @@ function trocaMes($data){
                         <a href="{{ route('projeto.show', $projeto->id) }}">
                             <img alt="" src="images/blog/12.jpg">
                         </a>
-                        <span class="post-meta-category"><a href="">Categoria</a></span>
+                        <span class="post-meta-category"><a href="">{{ $projeto->categoria['name'] }}</a></span>
                     </div>
                     <div class="post-item-description">
                         <span class="post-meta-date"><i class="fa fa-calendar-o"></i>{{ trocaMes($projeto->created_at->format('d F Y')) }}</span>
-                        <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33 Comments</a></span>
+                        <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>{{ $projeto->total_coments }} Comentários</a></span>
                         <h2><a href="{{ route('projeto.show', $projeto->id) }}">{{  $projeto->name }}</a></h2>
                         <p>{{ $projeto->descricao }}</p>
                         <a href="{{ route('projeto.show', $projeto->id) }}" class="item-link">Ler mais <i class="fa fa-arrow-right"></i></a>
