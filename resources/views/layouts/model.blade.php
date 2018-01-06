@@ -9,67 +9,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Scripts -->
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
-
     <link rel="shortcut icon" href="/images/favicon.png">
 
     <title>Titulo | @yield('page-title')</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/vendor/fontawesome/css/font-awesome.min.css" type="text/css" rel="stylesheet">
-    <link href="/vendor/animateit/animate.min.css" rel="stylesheet">
-
-    <!-- Vendor css -->
-    <link href="/vendor/owlcarousel/owl.carousel.css" rel="stylesheet">
-    <link href="/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
-
-    <!-- Template base -->
-    <link href="/css/theme-base.css" rel="stylesheet">
-
-    <!-- Template elements -->
-    <link href="/css/theme-elements.css" rel="stylesheet">
-
-    <!-- Responsive classes -->
-    <link href="/css/responsive.css" rel="stylesheet">
-    <!--
-    Laravel css
-    <link href="/css/app.css" rel="stylesheet">
-
-    Laravel js
-    <script src="/js/app.js"></script>-->
-
-    <!--[if lt IE 9]>
-		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-	<![endif]-->
-
-
-    <!-- Template color -->
-    <link href="/css/color-variations/blue.css" rel="stylesheet" type="text/css" media="screen" title="blue">
-
-    <!-- LOAD GOOGLE FONTS -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,700,600%7CRaleway:100,300,600,700,800" rel="stylesheet" type="text/css" />
-
-    <!-- SLIDER REVOLUTION 5.x CSS SETTINGS -->
-    <link rel="stylesheet" property="stylesheet" href="/vendor/rs-plugin/css/settings.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="/css/rs-plugin-styles.css" type="text/css" />
-
-    <!-- CSS CUSTOM STYLE -->
-    <link rel="stylesheet" type="text/css" href="/css/custom.css" media="screen" />
-
-    <!--VENDOR SCRIPT-->
-    <script src="/vendor/jquery/jquery-1.11.2.min.js"></script>
-    <script src="/vendor/plugins-compressed.js"></script>
-    
-    <!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
-    <script type="text/javascript" src="/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-    <script type="text/javascript" src="/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-
+    <!-- Stylesheets & Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,800,700,600|Montserrat:400,500,600,700|Raleway:100,300,600,700,800" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/plugins.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
 </head>
 
 <body class="wide">
@@ -91,46 +38,40 @@
                     </div>
                     <!--END: LOGO-->
 
-                    <!--MOBILE MENU -->
-                    <div class="nav-main-menu-responsive">
-                        <button class="lines-button x">
-                            <span class="lines"></span>
-                        </button>
-                    </div>
-                    <!--END: MOBILE MENU -->
-
-                    <!--TOP SEARCH -->
-                    <div id="top-search"> <a id="top-search-trigger"><i class="fa fa-search"></i><i class="fa fa-close"></i></a>
-                        <form action="search-results-page.html" method="get" data-toggle="validator">
-                            <input type="text" name="q" id="q" class="form-control" value="" placeholder="Start typing & press  &quot;Enter&quot;" required>
+                    <!--Top Search Form-->
+                    <div id="top-search">
+                        <form action="search-results-page.html" method="get">
+                            <input type="text" name="q" class="form-control" value="" placeholder="Start typing & press  &quot;Enter&quot;">
                         </form>
-
-
-
-
                     </div>
-                    <!--END: TOP SEARCH -->
+                    <!--end: Top Search Form-->
 
-                    <!--NAVIGATION-->
-                    <div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
+                    <!--Navigation Resposnive Trigger-->
+                    <div id="mainMenu-trigger">
+                        <button class="lines-button x"> <span class="lines"></span> </button>
+                    </div>
+                    <!--end: Navigation Resposnive Trigger-->
+
+                    <!--Navigation-->
+                    <div id="mainMenu" class="light">
                         <div class="container">
-                            <nav id="mainMenu" class="main-menu mega-menu">
-                                <ul class="main-menu nav nav-pills">
+                            <nav>
+                                <ul>
                                     <li class="dropdown"><a href="{{ route('projeto.index') }}">Projetos</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="{{ route('projeto.index') }}" class="icon-right"><span>Ver Projetos <i class="fa fa-list-ul"></i></span></a>
                                             </li>
-                                            @if (!Auth::guest())
+                                            @auth
                                                 <li><a href="{{ route('projeto.create') }}" class="icon-right"><span>Novo Projeto <i class="fa fa-edit"></i></span></a>
                                                 </li>
-                                            @endif
+                                            @endauth
                                         </ul>
                                     </li>
                                     <li><a href="">Sobre</a></li>
                                     <li><a href="">Ajuda</a></li>
 
                         <!-- Authentication Links -->
-                        @if (!Auth::guest())
+                        @auth
                             <li class="dropdown"><a href="#">
                              @if (session('socialUser'))
                             <img height="30px" width="30px" class="avatar" src="{{ session('socialUser')->getAvatar() }}">
@@ -152,10 +93,11 @@
                                     </li>   
                                 </ul>
                             </li>
-                        @else
+                        @endauth
+                        @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Registrar</a></li>
-                        @endif
+                        @endguest
                         <!--END: Authentication Links -->
 
                                 </ul>
@@ -204,14 +146,34 @@
     </div>
     <!-- END: WRAPPER -->
 
-    <!-- GO TOP BUTTON -->
-    <a class="gototop gototop-button" href="#"><i class="fa fa-chevron-up"></i></a>
+    <!-- Go to top button -->
+    <a id="goToTop"><i class="fa fa-angle-up top-icon"></i><i class="fa fa-angle-up"></i></a>
 
-    <!-- Theme Base, Components and Settings -->
-    <script src="/js/theme-functions.js"></script>
+    <!--Plugins-->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/plugins.js') }}"></script>
 
-    <!-- Custom js file -->
-    <script src="/js/custom.js"></script>
+    <!--Template functions-->
+    <script src="{{ asset('js/functions.js') }}"></script>
+
+    <!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/plugins/revolution/css/settings.css') }}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/plugins/revolution/css/layers.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/plugins/revolution/css/navigation.css') }}">
+
+    <script type="text/javascript" src="{{ asset('js/plugins/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/plugins/revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/revolution/js/extensions/revolution.extension.carousel.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/revolution/js/extensions/revolution.extension.migration.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
+
 
 
 

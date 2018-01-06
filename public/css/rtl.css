@@ -76,7 +76,7 @@ html{direction:rtl}body{direction:rtl}.flip.text-left{text-align:right}.flip.tex
 
 /*Mobile*/
 
-.nav-main-menu-responsive {
+#mainMenu-trigger {
   float: left;
   margin-left: 0px;
   margin-right: 6px;
@@ -240,7 +240,7 @@ html{direction:rtl}body{direction:rtl}.flip.text-left{text-align:right}.flip.tex
     float: left !important;
 }
 .float-left {
-    float: right; !important;
+    float: right !important;
 }
 .float-none {
     float: none !important;
@@ -417,6 +417,25 @@ body:not(.device-sm):not(.device-xs):not(.device-xxs) .post-modern .post-meta {
 .list-icon li > i {
   margin-right: -18px !important;
 }
+
+/*!!! Need to be verified*/
+/*.list-icons li i 
+{
+    margin-left: 22px;
+}
+
+.heading-fancy h4, 
+.heading-fancy h5, 
+.heading-fancy h6 
+{
+    padding-right: 0;
+    padding-left: 10px;
+}
+
+.topbar-dropdown .title .fa:first-child {
+    margin-left: 7px;
+    margin-right: 0;
+}*/
 
 /* ----------------------------------------------------------------------
 	Accordion & Toggles
