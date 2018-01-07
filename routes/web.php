@@ -39,3 +39,5 @@ Route::get('curtir/{projeto_id}/{acao?}', 'SocialController@curtir')->name('soci
 
 Route::get('{id}/salvar', 'SocialController@save')->name('social.save');
 
+Route::get('search/{id}/categorias', 'SearchController@categorias')->name('search.categorias');
+Route::get('search/{id}/tags', 'SearchController@tags')->name('search.tags');

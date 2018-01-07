@@ -25,6 +25,25 @@ function trocaMes($data){
 @endphp
 
 @section('content')
+<!-- Page Menu -->
+<div class="page-menu">
+    <div class="container">
+        <div class="menu-title">Categorias</div>
+        <nav>
+            <ul>
+                @foreach($categorias as $categoria)
+                <li class="active"><a href="{{ route('search.categorias',$categoria->id) }}">{{ $categoria["name"] }}</a> </li>
+                @endforeach
+            </ul>
+        </nav>
+
+        <div id="menu-responsive-icon">
+            <i class="fa fa-reorder"></i>
+        </div>
+
+    </div>
+</div>
+<!-- end: Page Menu -->
 <section id="page-content">
     <div class="container">
         <!-- post content -->
@@ -34,11 +53,11 @@ function trocaMes($data){
             <h1>Todos os Projetos</h1>
             <div class="breadcrumb float-left">
                 <ul>
-                    <li><a href="#">Home</a>
+                    <li><a href="{{ route('home') }}">Home</a>
                     </li>
-                    <li><a href="#">Projetos</a>
+                    <li><a href="{{ route('projeto.index') }}">Projetos</a>
                     </li>
-                    <li class="active"><a href="#">Ver Todos</a>
+                    <li class="active"><a href="{{ route('projeto.index') }}">Ver Todos</a>
                     </li>
                 </ul>
             </div>
@@ -53,9 +72,9 @@ function trocaMes($data){
                 <div class="post-item-wrap">
                     <div class="post-image">
                         <a href="{{ route('projeto.show', $projeto->id) }}">
-                            <img alt="" src="images/blog/12.jpg">
+                            <img alt="" src="/images/blog/12.jpg">
                         </a>
-                        <span class="post-meta-category"><a href="">{{ $projeto->categoria['name'] }}</a></span>
+                        <span class="post-meta-category"><a href="{{ route('search.categorias',$categoria->id) }}">{{ $projeto->categoria['name'] }}</a></span>
                     </div>
                     <div class="post-item-description">
                         <span class="post-meta-date"><i class="fa fa-calendar-o"></i>{{ trocaMes($projeto->created_at->format('d F Y')) }}</span>
@@ -73,14 +92,13 @@ function trocaMes($data){
 
 
 <!-- pagination nav -->
-<div class="text-center">
-        <div class="pagination-wrap">
-            {{ $projetos->links() }}
-        </div>
-    </div>
+<nav class="text-center">
+    <ul class="pagination pagination-simple">
+        {{ $projetos->links() }}
+    </ul>
+</nav>
 <!-- END: pagination nav -->
 
             </div>
-        </div>
     </section>
 @endsection

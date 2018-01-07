@@ -43,17 +43,17 @@ function trocaMes($data){
         <div class="menu-title">Navegar</div>
         <nav>
             <ul>
-                <li><a href="#descricao">Descrição</a> </li>
-                <li><a href="#cronograma">Cronograma</a> </li>
-                <li><a href="#ancora">Âncora</a> </li>
-                <li><a href="#questao_motriz">Questão Motriz</a> </li>
-                <li><a href="#n_alunos">Número de Alunos</a> </li>
-                <li><a href="#prazo">Prazo</a> </li>
-                <li><a href="#feedback">FeedBack</a> </li>
-                <li><a href="#resultado">Resultado</a> </li>
-                <li><a href="#comentarios_prof">Comentários Professor</a></li>
+                <li><a class="scroll-to" href="#descricao">Descrição</a> </li>
+                <li><a class="scroll-to" href="#cronograma">Cronograma</a> </li>
+                <li><a class="scroll-to" href="#ancora">Âncora</a> </li>
+                <li><a class="scroll-to" href="#questao_motriz">Questão Motriz</a> </li>
+                <li><a class="scroll-to" href="#n_alunos">Número de Alunos</a> </li>
+                <li><a class="scroll-to" href="#prazo">Prazo</a> </li>
+                <li><a class="scroll-to" href="#feedback">FeedBack</a> </li>
+                <li><a class="scroll-to" href="#resultado">Resultado</a> </li>
+                <li><a class="scroll-to" href="#comentarios_prof">Comentários Professor</a></li>
                 @if($projeto->prof_aux_id)
-                <li><a href="#prof_aux">Professor Auxiliar</a>
+                <li><a class="scroll-to" href="#prof_aux">Professor Auxiliar</a>
                 @endif
             </ul>
         </nav>
@@ -115,6 +115,7 @@ function trocaMes($data){
 
 
                         <div class="post-item-description">
+                            <div id="descricao"></div>
                             <h3>Descrição: </h3>
                             <p>{{ $projeto->descricao }}</p>
                             <div id="cronograma" class="seperator"></div>
@@ -366,7 +367,7 @@ function trocaMes($data){
                         <h4 class="widget-title">Tags</h4>
                         <div class="tags">
                             @foreach($tags as $tag)
-                            <a href="#">{{ $tag['name'] }}</a>
+                            <a href="{{ route('search.tags',$tag->name) }}">{{ $tag['name'] }}</a>
                             @endforeach
                         </div>
                     </div>
