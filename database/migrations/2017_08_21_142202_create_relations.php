@@ -38,21 +38,21 @@ class CreateRelations extends Migration
                 ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('set null');
-            $table->foreign('prof_aux_id')
+            /*$table->foreign('prof_aux_id')
                 ->references('id')
                 ->on('prof_aux')
                 ->onUpdate('cascade')
-                ->onDelete('set null');
+                ->onDelete('set null');*/
             $table->foreign('instituicao_id')
                 ->references('id')
                 ->on('instituicaos')
                 ->onUpdate('cascade')
                 ->onDelete('set null');
-            $table->foreign('versao_proj_id')
+            /*$table->foreign('versao_proj_id')
                 ->references('id')
                 ->on('versao_proj')
                 ->onUpdate('cascade')
-                ->onDelete('set null');
+                ->onDelete('set null');*/
         });
     }
 
