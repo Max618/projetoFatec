@@ -56,28 +56,38 @@ Criar Novo Projeto
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="upper" for="categoria">Categoria</label>
-                            {!! Form::select('categoria_id', $categorias, 'Selecione', ['class' => 'form-control']) !!}
+                            <label class="upper" for="componente_curricular">Componente curricular</label>
+                            <input type="text" class="form-control required" name="componente_curricular" placeholder="Componente Curricular" id="componente_curricular" aria-required="true">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="upper" for="tags">Tags</label>
-                            <input type="text" class="form-control required" name="tags" placeholder="Separe uma tag da outra com '/'" id="tags" aria-required="true">
+                            <label class="upper" for="n_alunos">Alunos por Grupo</label>
+                            <select name="n_alunos" id="n_alunos">
+                                <option value="">Selecione um Opção</option>
+                                @for($i = 1; $i < 11; $i++)
+                                <option value="{{$i}}">{{$i}}</option>
+                                @endfor
+                            </select>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="upper" for="instituicao">Instituição</label>
-                            {!! Form::select('instituicao_id', $instituicoes, 'Selecione', ['class' => 'form-control']) !!}
+                            <label class="upper" for="n_aulas">Aulas Necessárias</label>
+                            <select name="n_aulas" id="n_aulas">
+                                <option value="">Selecione um Opção</option>
+                                @for($i = 1; $i < 21; $i++)
+                                <option value="{{$i}}">{{$i}}</option>
+                                @endfor
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="upper" for="prazo">Prazo</label>
-                            <input type="text" class="form-control required" name="prazo" placeholder="Número de Aulas" id="prazo" aria-required="true">
+                            <label class="upper" for="tags">Tags</label>
+                            <input type="text" class="form-control required" name="tags" placeholder="Separe uma tag da outra com '/'" id="tags" aria-required="true">
                         </div>
                     </div>
                 </div>
@@ -90,27 +100,39 @@ Criar Novo Projeto
                 <div id="novos_campos" class="row">
 
                 </div>
+                <div class="seperator"><span>Informações</span></div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="upper" for="name_prof">Nome</label>
-                            <input type="text" class="form-control" name="name_prof" placeholder="Nome Professor Auxiliar" id="name_prof" aria-required="true">
+                            <label class="upper" for="prof">Professor Resposável</label>
+                            {{ Form::text('name', Auth::user()->name, ['class' => 'form-control', 'id' => 'prof', 'aria-required' =>'true' ]) }}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="upper" for="email">E-mail</label>
-                            <input type="email" class="form-control required" name="email" placeholder="E-mail Professor Auxiliar" id="email" aria-required="true">
+                            <label class="upper" for="prof_email">E-mail</label>
+                            {{ Form::email('email', Auth::user()->email, ['class' => 'form-control', 'id' => 'prof_email', 'aria-required' =>'true' ]) }}
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" id="prof_aux">
+
+                </div>
+                <button type="button" id="add_prof" class="btn btn-light btn-xs">+</button>
+                <div id="add_escola" class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="upper" for="img">Imagem</label>
-                            <input type="file" class="form-control required" name="imagem" id="imagem">
+                            <label class="upper" for="unidade">Unidade Escolar</label>
+                            {{ Form::select('instituicao_id', $instituicoes, 'Selecione uma Unidade', ['class' => 'form-control']) }}
                         </div>
                     </div>
+                    <!--<button type="button" id="add_esc" class="btn btn-light btn-xs">+</button>-->
+                    <!--<div class="col-md-6">
+                        <div class="form-group">
+                            <label class="upper" for="img">Imagem</label>
+                            {{ Form::file('imagem', ['class' => 'form-control required', 'id' => 'img']) }}
+                        </div>
+                    </div>-->
                 </div>
                 <div class="row">
                     <div class="col-md-12">
