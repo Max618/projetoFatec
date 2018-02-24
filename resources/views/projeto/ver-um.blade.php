@@ -265,13 +265,16 @@ function trocaMes($data){
                                 </div>
                                 <div class="tab-pane" id="tab3">
                                     <div class="post-thumbnail-list">
+                                        @forelse($projeto->ultimos() as $ultimo)
                                         <div class="post-thumbnail-entry">
                                             <div class="post-thumbnail-content">
-                                                <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-                                                <span class="post-date"><i class="fa fa-clock-o"></i> 11h ago</span>
-                                                <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
+                                                <a href="{{ route('projeto.show', $ultimo->id) }}">{{ $ultimo->name }}</a>
+                                                <span class="post-date"><i class="fa fa-clock-o"></i> {{ date('d/m/y', strtotime($ultimo->created_at)) }}</span>
+                                                <span class="post-category"><i class="fa fa-tag"></i> {{ $ultimo->componente_curricular }}</span>
                                             </div>
                                         </div>
+                                        @empty
+                                        @endforelse
                                     </div>
                                 </div>
                             </div>

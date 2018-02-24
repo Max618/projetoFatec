@@ -120,4 +120,9 @@ class Projeto extends Model
         $populares = DB::table('projetos')->get();
         return $populares;
     }
+
+    public function ultimos(){
+        $ultimos = DB::table('projetos')->orderBy('created_at','desc')->take(3)->get();
+        return $ultimos;
+    }
 }
