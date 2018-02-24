@@ -13,7 +13,7 @@ class Categoria extends Model
     // 1 categoria - N projetos
     public function projeto()
     {
-        return $this->hasMany('App\Projeto');
+        return $this->hasMany('App\Projeto','componente_curricular', 'name');
     }
 
     // 1 categoria - 1 aviso

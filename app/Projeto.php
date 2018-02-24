@@ -3,7 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use App\Tag;
+use App;
 
 class Projeto extends Model
 {
@@ -22,6 +24,7 @@ class Projeto extends Model
         //'resultado',
         'tags',
         'total_visualizacao',
+        'componente_curricular',
         //'ambito_id',
         //'eixo_id',
         'categoria_id',
@@ -30,7 +33,7 @@ class Projeto extends Model
         'total_coments',
         'total_curtidas',
         'total_comp',
-        'prof_aux_id',
+        //'prof_aux_id',
         'arquivo',
         'versao_proj_id',
     ];
@@ -44,7 +47,7 @@ class Projeto extends Model
     // N projeto - 1 categoria
     public function categoria() 
     {
-    	return $this->belongsTo('App\Categoria');
+    	return $this->belongsTo('App\Categoria','componente_curricular', 'name');
     }
 
     // N projeto - 1 ambito
@@ -59,10 +62,10 @@ class Projeto extends Model
     	return $this->belongsToMany(Execucao::class, 'execucao_projeto');
     }
 
-    // N projeto - 1 prof_aux
+    // N projeto - N prof_aux
     public function prof_aux()
     {
-        return $this->belongsTo('App\Prof_aux');
+        return $this->belongsToMany('App\Prof_aux', 'profs_projs');
     }
 
     // N projeto - 1 user
@@ -103,5 +106,13 @@ class Projeto extends Model
 
     public function campos(){
         return $this->hasMany('App\Campo');
+    }
+
+    public function prof($var){
+        $prof = App\Prof_aux::firstOrCreate($var);
+        DB::table('profs_projs')->insert([
+            'projeto_id' => $this->attributes['id'],
+            'prof_aux_id' => $prof->id
+        ]);
     }
 }

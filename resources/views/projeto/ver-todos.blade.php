@@ -72,9 +72,9 @@ function trocaMes($data){
                 <div class="post-item-wrap">
                     <div class="post-image">
                         <a href="{{ route('projeto.show', $projeto->id) }}">
-                            <img alt="" src="/images/blog/12.jpg">
+                            <!--<img alt="" src="/images/blog/12.jpg">-->
                         </a>
-                        <span class="post-meta-category"><a href="{{ route('search.categorias',$categoria->id) }}">{{ $projeto->categoria['name'] }}</a></span>
+                        <span class="post-meta-category"><a href="{{ route('search.categorias',$projeto->categoria->id) }}">{{ $projeto->componente_curricular }}</a></span>
                     </div>
                     <div class="post-item-description">
                         <span class="post-meta-date"><i class="fa fa-calendar-o"></i>{{ trocaMes($projeto->created_at->format('d F Y')) }}</span>

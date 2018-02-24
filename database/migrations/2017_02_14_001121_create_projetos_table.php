@@ -33,13 +33,14 @@ class CreateProjetosTable extends Migration
             $table->text('projeto');
             //$table->text('resultado')->nullable();
             $table->string('tags', 150);
-            $table->integer('prof_aux_id')->unsigned()->nullable();
+            //$table->integer('prof_aux_id')->unsigned()->nullable();
             $table->integer('total_curtidas')->default(0);
             $table->integer('total_comp')->default(0);
             $table->integer('total_coments')->default(0);
             $table->integer('total_visualizacao')->default(0);
             $table->string('arquivo')->nullable();
-            $table->integer('instituicao_id')->unsigned()->nullable();
+            //$table->integer('instituicao_id')->unsigned()->nullable();
+            $table->string('instituicao')->nullable();
             $table->integer('versao_proj_id')->unsigned()->nullable();
             $table->timestampsTz();
         });

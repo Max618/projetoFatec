@@ -44,15 +44,14 @@ function trocaMes($data){
         <nav>
             <ul>
                 <li><a class="scroll-to" href="#descricao">Descrição</a> </li>
-                <li><a class="scroll-to" href="#cronograma">Cronograma</a> </li>
-                <li><a class="scroll-to" href="#ancora">Âncora</a> </li>
-                <li><a class="scroll-to" href="#questao_motriz">Questão Motriz</a> </li>
-                <li><a class="scroll-to" href="#n_alunos">Número de Alunos</a> </li>
-                <li><a class="scroll-to" href="#prazo">Prazo</a> </li>
-                <li><a class="scroll-to" href="#feedback">FeedBack</a> </li>
-                <li><a class="scroll-to" href="#resultado">Resultado</a> </li>
-                <li><a class="scroll-to" href="#comentarios_prof">Comentários Professor</a></li>
-                @if($projeto->prof_aux_id)
+                <li><a class="scroll-to" href="#n_alunos">Alunos por Grupo</a> </li>
+                <li><a class="scroll-to" href="#n_aulas">Aulas Necessárias</a> </li>
+                @forelse($campos as $campo)
+                <li><a class="scroll-to" href="#{{ $campo->name }}">{{ $campo->name }}</a> </li>
+                @empty
+                @endforelse
+                <li><a class="scroll-to" href="#projeto">Projeto</a> </li>
+                @if($projeto->prof_aux)
                 <li><a class="scroll-to" href="#prof_aux">Professor Auxiliar</a>
                 @endif
             </ul>
@@ -88,11 +87,9 @@ function trocaMes($data){
                             <div class="post-meta">
                                 <i class="fa fa-user"></i>
                                 <span class="post-autor"><strong>Postado por: </strong><a href="#">{{ $projeto->user['name'] }}</a></span>
-                                <span class="post-category"><strong>de </strong><a href="#">{{ $projeto->instituicao['name'] }}</a></span>
+                                <!--<span class="post-category"><strong>de </strong><a href="#">{{ $projeto->instituicao['name'] }}</a></span>--><br>
                                 <i class="fa fa-tags"></i>
-                                <span class="post-category"><strong>Categoria:</strong> <a href="#">{{ $projeto->categoria['name'] }},</a></span>
-                                <span class="post-category"><strong>Ambito: </strong><a href="#">{{ $projeto->ambito['name'] }},</a></span>
-                                <span class="post-category"><strong>Eixo: </strong><a href="#">{{ $projeto->eixo['name'] }},</a></span>
+                                <span class="post-category"><strong>Componente Curricular:</strong> <a href="#">{{ $projeto->categoria['name'] }}</a></span>
                                 <div class="post-meta-share">
                                     <a class="btn btn-xs btn-slide btn-facebook" target='_blank' href="{{ route('social.compartilhar', ['provider' =>'facebook', 'id' => $projeto->id] ) }}">
                                         <i class="fa fa-facebook"></i>
@@ -118,44 +115,33 @@ function trocaMes($data){
                             <div id="descricao"></div>
                             <h3>Descrição: </h3>
                             <p>{{ $projeto->descricao }}</p>
-                            <div id="cronograma" class="seperator"></div>
-                            
-                            <h3>Cronograma: </h3>
-                            <p>{{ $projeto->cronograma }}</p>
-                            <div id="ancora" class="seperator"></div>
+                            <div id="descricao" class="seperator"></div>
 
-                            <h3>Âncora: </h3>
-                            <p>{{ $projeto->ancora }}</p>
-                            <div id="questao_motriz" class="seperator"></div>
-                            
-                            <h3>Questão Motriz: </h3>
-                            <p>{{ $projeto->questao_motriz }}</p>
+                            <h3>Alunos por Grupo: </h3>
+                            <p>{{ $projeto->n_alunos }}</p>
                             <div id="n_alunos" class="seperator"></div>
 
-                            <h3>Número de Alunos por Grupo: </h3>
-                            <p>{{ $projeto->n_alunos }}</p>
-                            <div id="prazo" class="seperator"></div>
+                            <h3>Aulas Necessárias: </h3>
+                            <p>{{ $projeto->n_aulas }}</p>
+                            <div id="n_aulas" class="seperator"></div>
 
-                            <h3>Prazo de Aulas: </h3>
-                            <p>{{ $projeto->prazo }}</p>
-                            <div id="feedback" class="seperator"></div>
+                            @forelse($campos as $campo)
+                            <h3>{{ $campo->name  }}: </h3>
+                            <p>{{ $campo->val }}</p>
+                            <div id="{{$campo->name}}" class="seperator"></div>
+                            @empty
+                            @endforelse
 
-                            <h3>FeedBack: </h3>
-                            <p>{{ $projeto->feedback }}</p>
-                            <div id="resultado" class="seperator"></div>
-
-                            <h3>Resultado: </h3>
-                            <p>{{ $projeto->resultado }}</p>
-                            <div id="comentarios_prof" class="seperator"></div>
-
-                            <h3>Comentários do Professor: </h3>
-                            <p>{{ $projeto->comentarios_prof }}</p>
+                            <h3>Projeto: </h3>
+                            <p>{{ $projeto->projeto }}</p>
+                            <div id="projeto" class="seperator"></div>
     
-                            @if($projeto->prof_aux_id)
-                            <div id="prof_aux" class="seperator"></div>
+                            @if($projeto->prof_aux)
                             <h3>Profesor Auxiliar: </h3>
-                            <p><strong>Nome:</strong> {{ $projeto->prof_aux['name_prof'] }}<br>
-                            <strong>Email:</strong> {{ $projeto->prof_aux['email'] }}</p>
+                            @foreach($projeto->prof_aux as $prof)
+                            <p><strong>Nome:</strong> {{ $prof->name_prof }}<br>
+                            <strong>Email:</strong> {{ $prof->email }}</p>
+                            @endforeach
                             @endif
 
                         </div>

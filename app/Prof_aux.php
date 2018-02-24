@@ -10,9 +10,9 @@ class Prof_aux extends Model
         'name_prof', 'email',
     ];
 
-    // 1 prof_aux - N projetos
+    // N prof_aux - N projetos
     public function projeto()
     {
-        return $this->hasMany('App\Projeto');
+        return $this->belongsToMany('App\Projeto', 'profs_projs');
     }
 }
