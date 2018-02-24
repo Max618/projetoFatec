@@ -51,7 +51,7 @@ function trocaMes($data){
                 @empty
                 @endforelse
                 <li><a class="scroll-to" href="#projeto">Projeto</a> </li>
-                @if($projeto->prof_aux)
+                @if(count($projeto->prof_aux) > 0)
                 <li><a class="scroll-to" href="#prof_aux">Professor Auxiliar</a>
                 @endif
             </ul>
@@ -77,11 +77,6 @@ function trocaMes($data){
                     <!-- Post single item-->
                     <div class="post-item">
                         <div class="post-item-wrap">
-                            <div class="post-image">
-                                <a href="#">
-                                    <img alt="" src="/images/blog/1.jpg">
-                                </a>
-                            </div>
                         <div class="post-item-description">
                             <h1>{{ $projeto->name }}</h1>
                             <div class="post-meta">
@@ -113,31 +108,31 @@ function trocaMes($data){
 
                         <div class="post-item-description">
                             <div id="descricao"></div>
-                            <h3>Descrição: </h3>
+                            <h4>Descrição: </h4>
                             <p>{{ $projeto->descricao }}</p>
                             <div id="descricao" class="seperator"></div>
 
-                            <h3>Alunos por Grupo: </h3>
+                            <h4>Alunos por Grupo: </h4>
                             <p>{{ $projeto->n_alunos }}</p>
                             <div id="n_alunos" class="seperator"></div>
 
-                            <h3>Aulas Necessárias: </h3>
+                            <h4>Aulas Necessárias: </h4>
                             <p>{{ $projeto->n_aulas }}</p>
                             <div id="n_aulas" class="seperator"></div>
 
                             @forelse($campos as $campo)
-                            <h3>{{ $campo->name  }}: </h3>
+                            <h4>{{ $campo->name  }}: </h4>
                             <p>{{ $campo->val }}</p>
                             <div id="{{$campo->name}}" class="seperator"></div>
                             @empty
                             @endforelse
 
-                            <h3>Projeto: </h3>
+                            <h4>Projeto: </h4>
                             <p>{{ $projeto->projeto }}</p>
                             <div id="projeto" class="seperator"></div>
     
-                            @if($projeto->prof_aux)
-                            <h3>Profesor Auxiliar: </h3>
+                            @if(count($projeto->prof_aux) > 0)
+                            <h4>Professor Auxiliar: </h4>
                             @foreach($projeto->prof_aux as $prof)
                             <p><strong>Nome:</strong> {{ $prof->name_prof }}<br>
                             <strong>Email:</strong> {{ $prof->email }}</p>
@@ -154,7 +149,7 @@ function trocaMes($data){
                 </div>
                 
                 <!-- Executar -->
-                <div id='executar'>
+                <!--<div id='executar'>
                     <div class="heading">
                         <h4 class="executar-title">Executar</h4>
                     </div>
@@ -170,7 +165,7 @@ function trocaMes($data){
                         </div>
                         <input type="submit" class="btn btn-primary">
                     </form>
-                </div>
+                </div>-->
                 <!-- END: Executar -->
 
                 <!-- Comments-->
@@ -237,52 +232,22 @@ function trocaMes($data){
             <!-- Sidebar-->
             <div class="sidebar col-md-3">
                 <div class="pinOnScroll">
-                    <!--widget newsletter-->
-                    <div class="widget  widget-newsletter">
-
-                        <form id="widget-search-form-sidebar" action="search-results-page.html" method="get" class="form-inline">
-                            <div class="input-group">
-                                <input type="text" aria-required="true" name="q" class="form-control widget-search-form" placeholder="Search for pages...">
-                                <span class="input-group-btn">
-                  <button type="submit" id="widget-widget-search-form-button" class="btn btn-default"><i class="fa fa-search"></i></button>
-                  </span> </div>
-                        </form>
-                    </div>
-                    <!--end: widget newsletter-->
-
                     <!--Tabs with Posts-->
                     <div class="widget">
                         <div id="tabs-01" class="tabs simple">
                             <ul class="tabs-navigation">
-                                <li class="active"><a href="#tab1">Popular</a> </li>
-                                <li class=""><a href="#tab2">Featured</a> </li>
-                                <li class=""><a href="#tab3">Recent</a> </li>
+                                <li class="active"><a href="#tab1">Populares</a> </li>
+                                <li class=""><a href="#tab2">Iguais</a> </li>
+                                <li class=""><a href="#tab3">Recentes</a> </li>
                             </ul>
                             <div class="tabs-content">
                                 <div class="tab-pane active" id="tab1">
                                     <div class="post-thumbnail-list">
                                         <div class="post-thumbnail-entry">
-                                            <img alt="" src="images/blog/thumbnail/5.jpg">
                                             <div class="post-thumbnail-content">
                                                 <a href="#">Suspendisse consectetur fringilla luctus</a>
                                                 <span class="post-date"><i class="fa fa-clock-o"></i> 6m ago</span>
                                                 <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
-                                            </div>
-                                        </div>
-                                        <div class="post-thumbnail-entry">
-                                            <img alt="" src="images/blog/thumbnail/6.jpg">
-                                            <div class="post-thumbnail-content">
-                                                <a href="#">Consectetur adipiscing elit</a>
-                                                <span class="post-date"><i class="fa fa-clock-o"></i> 24h ago</span>
-                                                <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-                                            </div>
-                                        </div>
-                                        <div class="post-thumbnail-entry">
-                                            <img alt="" src="images/blog/thumbnail/7.jpg">
-                                            <div class="post-thumbnail-content">
-                                                <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-                                                <span class="post-date"><i class="fa fa-clock-o"></i> 11h ago</span>
-                                                <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
                                             </div>
                                         </div>
                                     </div>
@@ -290,26 +255,9 @@ function trocaMes($data){
                                 <div class="tab-pane" id="tab2">
                                     <div class="post-thumbnail-list">
                                         <div class="post-thumbnail-entry">
-                                            <img alt="" src="images/blog/thumbnail/6.jpg">
                                             <div class="post-thumbnail-content">
                                                 <a href="#">Consectetur adipiscing elit</a>
                                                 <span class="post-date"><i class="fa fa-clock-o"></i> 24h ago</span>
-                                                <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-                                            </div>
-                                        </div>
-                                        <div class="post-thumbnail-entry">
-                                            <img alt="" src="images/blog/thumbnail/7.jpg">
-                                            <div class="post-thumbnail-content">
-                                                <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-                                                <span class="post-date"><i class="fa fa-clock-o"></i> 11h ago</span>
-                                                <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-                                            </div>
-                                        </div>
-                                        <div class="post-thumbnail-entry">
-                                            <img alt="" src="images/blog/thumbnail/8.jpg">
-                                            <div class="post-thumbnail-content">
-                                                <a href="#">Fringilla luctus Lorem ipsum dolor sit amet</a>
-                                                <span class="post-date"><i class="fa fa-clock-o"></i> 11h ago</span>
                                                 <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
                                             </div>
                                         </div>
@@ -318,26 +266,9 @@ function trocaMes($data){
                                 <div class="tab-pane" id="tab3">
                                     <div class="post-thumbnail-list">
                                         <div class="post-thumbnail-entry">
-                                            <img alt="" src="images/blog/thumbnail/7.jpg">
                                             <div class="post-thumbnail-content">
                                                 <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
                                                 <span class="post-date"><i class="fa fa-clock-o"></i> 11h ago</span>
-                                                <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-                                            </div>
-                                        </div>
-                                        <div class="post-thumbnail-entry">
-                                            <img alt="" src="images/blog/thumbnail/8.jpg">
-                                            <div class="post-thumbnail-content">
-                                                <a href="#">Fringilla luctus Lorem ipsum dolor sit amet</a>
-                                                <span class="post-date"><i class="fa fa-clock-o"></i> 11h ago</span>
-                                                <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-                                            </div>
-                                        </div>
-                                        <div class="post-thumbnail-entry">
-                                            <img alt="" src="images/blog/thumbnail/6.jpg">
-                                            <div class="post-thumbnail-content">
-                                                <a href="#">Consectetur adipiscing elit</a>
-                                                <span class="post-date"><i class="fa fa-clock-o"></i> 24h ago</span>
                                                 <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
                                             </div>
                                         </div>

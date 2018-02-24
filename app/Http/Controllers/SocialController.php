@@ -114,7 +114,8 @@ class SocialController extends Controller
     public function save($id)
     {
         $projeto = App\Projeto::find($id);
-        $pdf = PDF::loadView('projeto.save', compact('projeto'));
+        $campos = $projeto->campos;
+        $pdf = PDF::loadView('projeto.save', compact('projeto','campos'));
         return $pdf->download($projeto->name.'.pdf');
     }
 }

@@ -115,4 +115,9 @@ class Projeto extends Model
             'prof_aux_id' => $prof->id
         ]);
     }
+
+    public function populares(){
+        $populares = DB::table('projetos')->get();
+        return $populares;
+    }
 }

@@ -1,79 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
 
-
-@section('page-title')
-   //salvar | {{ $projeto->name }}
-@endsection
-{{ $projeto->name  }}
-
-    <section class="content">
-        <div class="container">
-            <div class="row">
-                <!-- Blog post-->
-                <div class="post-content post-content-single col-md-9">
-                    <!-- Post item-->
+<head>
+</head>
+<body class="wide">
+<div class="wrapper">
+<section id="page-content" class="sidebar-right">
+    <div class="container">
+        <div class="row">
+            <!-- content -->
+            <div class="content col-md-9">
+                <!-- Blog -->
+                <div id="blog" class="single-post">
+                    <!-- Post single item-->
                     <div class="post-item">
-                        <div class="post-content-details">
-                            <div class="post-title">
+                        <div class="post-item-wrap">
+                            <div class="post-item-description">
                                 <h1>{{ $projeto->name }}</h1>
-                                <i class="fa fa-user"></i>
-                                <span class="post-autor"><strong>Postado por: </strong><a href="#">{{ $projeto->user['name'] }}</a></span>
-                                <span class="post-category"><strong>de </strong><a href="#">{{ $projeto->instituicao['name'] }}</a></span>
-                                <br>
-                                <i class="fa fa-tags"></i>
-                                <span class="post-category"><strong>Categoria:</strong> <a href="#">{{ $projeto->categoria['name'] }},</a></span>
-                                <span class="post-category"><strong>Ambito: </strong><a href="#">{{ $projeto->ambito['name'] }},</a></span>
-                                <span class="post-category"><strong>Eixo: </strong><a href="#">{{ $projeto->eixo['name'] }},</a></span>
-                                <span class="post-category"><strong>Tags: </strong></span>
-                                <a href="#"><span class="label label-default">{{ $projeto->tags }}</a></span>
-                            </div>
+                                <div class="post-meta">
+                                    <i class="fa fa-user"></i>
+                                    <span class="post-autor"><strong>Postado por: </strong><a href="#">{{ $projeto->user['name'] }}</a></span>
+                                    <!--<span class="post-category"><strong>de </strong><a href="#">{{ $projeto->instituicao['name'] }}</a></span>--><br>
+                                    <i class="fa fa-tags"></i>
+                                    <span class="post-category"><strong>Componente Curricular:</strong> <a href="#">{{ $projeto->categoria['name'] }}</a></span>
+                                </div>
 
-                            <div id="descricao" class="seperator"></div>
 
-                            <div class="post-description">
-                                <h3>Descrição: </h3>
-                                <p>{{ $projeto->descricao }}</p>
-                                <div id="cronograma" class="seperator"></div>
+                                <div class="post-item-description">
+                                    <div id="descricao"></div>
+                                    <h4>Descrição: </h4>
+                                    <p>{{ $projeto->descricao }}</p>
+                                    <div id="descricao" class="seperator"></div>
 
-                                <h3>Cronograma: </h3>
-                                <p>{{ $projeto->cronograma }}</p>
-                                <div id="ancora" class="seperator"></div>
+                                    <h4>Alunos por Grupo: </h4>
+                                    <p>{{ $projeto->n_alunos }}</p>
+                                    <div id="n_alunos" class="seperator"></div>
 
-                                <h3>Âncora: </h3>
-                                <p>{{ $projeto->ancora }}</p>
-                                <div id="questao_motriz" class="seperator"></div>
+                                    <h4>Aulas Necessárias: </h4>
+                                    <p>{{ $projeto->n_aulas }}</p>
+                                    <div id="n_aulas" class="seperator"></div>
 
-                                <h3>Questão Motriz: </h3>
-                                <p>{{ $projeto->questao_motriz }}</p>
-                                <div id="n_alunos" class="seperator"></div>
+                                    @forelse($campos as $campo)
+                                    <h4>{{ $campo->name  }}: </h4>
+                                    <p>{{ $campo->val }}</p>
+                                    <div id="{{$campo->name}}" class="seperator"></div>
+                                    @empty
+                                    @endforelse
 
-                                <h3>Número de Alunos por Grupo: </h3>
-                                <p>{{ $projeto->n_alunos }}</p>
-                                <div id="prazo" class="seperator"></div>
+                                    <h4>Projeto: </h4>
+                                    <p>{{ $projeto->projeto }}</p>
+                                    <div id="projeto" class="seperator"></div>
 
-                                <h3>Prazo de Aulas: </h3>
-                                <p>{{ $projeto->prazo }}</p>
-                                <div id="feedback" class="seperator"></div>
+                                    @if(count($projeto->prof_aux) > 0)
+                                    <h4>Professor Auxiliar: </h4>
+                                    @foreach($projeto->prof_aux as $prof)
+                                    <p><strong>Nome:</strong> {{ $prof->name_prof }}<br>
+                                        <strong>Email:</strong> {{ $prof->email }}</p>
+                                    @endforeach
+                                    @endif
 
-                                <h3>FeedBack: </h3>
-                                <p>{{ $projeto->feedback }}</p>
-                                <div id="resultado" class="seperator"></div>
-
-                                <h3>Resultado: </h3>
-                                <p>{{ $projeto->resultado }}</p>
-                                <div id="comentarios_prof" class="seperator"></div>
-
-                                <h3>Comentários do Professor: </h3>
-                                <p>{{ $projeto->comentarios_prof }}</p>
-
-                                @if($projeto->prof_aux_id)
-                                    <div id="prof_aux" class="seperator"></div>
-                                    <h3>Profesor Auxiliar: </h3>
-                                    <p><strong>Nome:</strong> {{ $projeto->prof_aux['name_prof'] }}<br>
-                                        <strong>Email:</strong> {{ $projeto->prof_aux['email'] }}</p>
-                                @endif
-
+                                </div>
                             </div>
                         </div>
-            </div>
         </div>
-    </section>
+    </div>
+</section>
+</div>
+</body>
+
+</html>
