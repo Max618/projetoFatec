@@ -32,7 +32,7 @@
 
                     <!--LOGO-->
                     <div id="logo">
-                        <a href="{{{ url('/') }}}" class="logo" data-dark-logo="/images/logo-dark.png">
+                        <a href="{{ url('/') }}" class="logo" data-dark-logo="/images/logo-dark.png">
                             <img src="/images/logo.png" alt="Polo Logo">
                         </a>
                     </div>
@@ -57,18 +57,17 @@
                         <div class="container">
                             <nav>
                                 <ul>
+                                    <li><a href="{{ url('/') }}">Pagina Inicial</a></li>
                                     <li class="dropdown"><a href="{{ route('projeto.index') }}">Projetos</a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="{{ route('projeto.index') }}" class="icon-right"><span>Ver Projetos <i class="fa fa-list-ul"></i></span></a>
+                                            <li><a href="{{ route('projeto.index') }}" class="icon-right"><span><i class="fa fa-list-ul"></i> Todos Projetos</span></a>
                                             </li>
                                             @auth
-                                                <li><a href="{{ route('projeto.create') }}" class="icon-right"><span>Novo Projeto <i class="fa fa-edit"></i></span></a>
+                                                <li><a href="{{ route('projeto.create') }}" class="icon-right"><span><i class="fa fa-edit"></i> Novo Projeto</span></a>
                                                 </li>
                                             @endauth
                                         </ul>
                                     </li>
-                                    <li><a href="">Sobre</a></li>
-                                    <li><a href="">Ajuda</a></li>
 
                         <!-- Authentication Links -->
                         @auth
@@ -79,12 +78,12 @@
                             {{ Auth::user()->name }} <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('home') }}"  class="icon-right"><span>Home <i class="fa fa-home"></i></span></a>
+                                        <a href="{{ route('home') }}"  class="icon-right"><span><i class="fa fa-home"></i> Home</span></a>
                                     </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();" class="icon-right"><span>Sair <i class="fa fa-sign-out"></i></span>
+                                                     document.getElementById('logout-form').submit();" class="icon-right"><span><i class="fa fa-sign-out"></i> Sair</span>
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

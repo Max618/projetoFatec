@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Instituicao extends Model
 {
     protected $fillable = [
-        'name', 'email', 'telefone', 'logradouro', 'numero_log', 'complemento', 'cep', 'cidade', 'estado',
+        'id' ,'name'/*, 'email', 'telefone', 'logradouro', 'numero_log', 'complemento', 'cep', 'cidade', 'estado',*/
     ];
 
     // N - N
