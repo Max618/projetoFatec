@@ -88,11 +88,11 @@ function trocaMes($data){
                                 <div class="post-meta-share">
                                     <a class="btn btn-xs btn-slide btn-facebook" target='_blank' href="{{ route('social.compartilhar', ['provider' =>'facebook', 'id' => $projeto->id] ) }}">
                                         <i class="fa fa-facebook"></i>
-                                        <span>Facebook</span>
+                                        <span>Compartilhar</span>
                                     </a>
                                     <a class="btn btn-xs btn-slide btn-twitter" target='_blank' href="{{ route('social.compartilhar', ['provider' =>'twitter', 'id' => $projeto->id] ) }}" data-width="100">
                                         <i class="fa fa-twitter"></i>
-                                        <span>Twitter</span>
+                                        <span>Tweetar</span>
                                     </a>
                                     <a class="btn btn-xs btn-slide btn-googleplus" target='_blank' href="mailto:?body=<?php echo $url; ?>" data-width="118">
                                         <i class="fa fa-envelope"></i>
@@ -243,29 +243,37 @@ function trocaMes($data){
                             <div class="tabs-content">
                                 <div class="tab-pane active" id="tab1">
                                     <div class="post-thumbnail-list">
+                                        @forelse($projeto->populares(3) as $populares)
                                         <div class="post-thumbnail-entry">
                                             <div class="post-thumbnail-content">
-                                                <a href="#">Suspendisse consectetur fringilla luctus</a>
-                                                <span class="post-date"><i class="fa fa-clock-o"></i> 6m ago</span>
-                                                <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
+                                                <a href="{{ route('projeto.show', $populares->id) }}">{{ $populares->name }}</a>
+                                                <span class="post-date"><i class="fa fa-clock-o"></i> {{ date('d/m/y', strtotime($populares->created_at)) }}</span>
+                                                <span class="post-category"><i class="fa fa-tag"></i> {{ $populares->componente_curricular }}</span>
                                             </div>
                                         </div>
+                                        @empty
+                                        <p>Nenhum projeto semelhante ainda</p>
+                                        @endforelse
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tab2">
                                     <div class="post-thumbnail-list">
+                                        @forelse($projeto->iguais(3) as $iguais)
                                         <div class="post-thumbnail-entry">
                                             <div class="post-thumbnail-content">
-                                                <a href="#">Consectetur adipiscing elit</a>
-                                                <span class="post-date"><i class="fa fa-clock-o"></i> 24h ago</span>
-                                                <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
+                                                <a href="{{ route('projeto.show', $iguais->id) }}">{{ $iguais->name }}</a>
+                                                <span class="post-date"><i class="fa fa-clock-o"></i> {{ date('d/m/y', strtotime($iguais->created_at)) }}</span>
+                                                <span class="post-category"><i class="fa fa-tag"></i> {{ $iguais->componente_curricular }}</span>
                                             </div>
-                                        </div>
+                                           </div>
+                                        @empty
+                                        <p>Nenhum projeto semelhante ainda</p>
+                                        @endforelse
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tab3">
                                     <div class="post-thumbnail-list">
-                                        @forelse($projeto->ultimos() as $ultimo)
+                                        @forelse($projeto->ultimos(3) as $ultimo)
                                         <div class="post-thumbnail-entry">
                                             <div class="post-thumbnail-content">
                                                 <a href="{{ route('projeto.show', $ultimo->id) }}">{{ $ultimo->name }}</a>
@@ -274,6 +282,7 @@ function trocaMes($data){
                                             </div>
                                         </div>
                                         @empty
+                                        <p>Nenhum projeto semelhante ainda</p>
                                         @endforelse
                                     </div>
                                 </div>

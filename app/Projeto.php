@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use App\Tag;
 use App;
@@ -116,13 +117,36 @@ class Projeto extends Model
         ]);
     }
 
-    public function populares(){
-        $populares = DB::table('projetos')->get();
+    public function populares($take = null){
+        $ids = $this->getPopularesIds($take);
+        $populares = new Collection();
+        foreach ($ids as $id){
+            $populares->push(App\Projeto::find($id));
+        }
         return $populares;
     }
 
-    public function ultimos(){
-        $ultimos = DB::table('projetos')->orderBy('created_at','desc')->take(3)->get();
+    public function ultimos($take = null){
+        $ultimos = DB::table('projetos')->orderBy('created_at','desc')->where('id','<>',$this->id)->take($take)->get();
         return $ultimos;
+    }
+
+    public function iguais($take = null) {
+        $iguais = DB::table('projetos')->where(['componente_curricular' => $this->componente_curricular])->where('id','<>',$this->id)->take($take)->get();
+        return $iguais;
+    }
+
+    private function getPopularesIds($take = null){
+        $projetos = DB::table('projetos')->get();
+        $medias = [];
+        foreach ($projetos as $key => $projeto){
+            $medias[$key] = [
+                'id' => $projeto->id,
+                'media' => ($projeto->total_curtidas*3+$projeto->total_comp*3+$projeto->total_coments*3+$projeto->total_visualizacao)/10
+            ];
+        }
+        $medias = new Collection($medias);
+        $ids = $medias->sortByDesc('media')->take($take)->pluck('id');
+        return $ids;
     }
 }

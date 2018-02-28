@@ -10,7 +10,7 @@ Pagina Inicial
     <div class="container">
         <div class="heading heading-center m-b-40" data-animation="fadeInUp">
             <h2>Sistema Gerenciador de Atividades Escolares</h2>
-            <!--<span class="lead">Create amam ipsum dolor sit amet, consectetur adipiscing elit.</span>-->
+            <span class="lead">Versão Beta</span>
         </div>
         <div class="row" data-animation="fadeInUp">
             <div class="col-md-12">

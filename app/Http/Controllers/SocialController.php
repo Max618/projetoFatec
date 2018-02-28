@@ -34,6 +34,9 @@ class SocialController extends Controller
 
     public function compartilhar($provider, $id) 
     {
+        $projeto = App\Projeto::find($id);
+        $projeto->total_comp += 1;
+        $projeto->save();
         $url = env('APP_URL')."/projeto/".$id;
         return redirect(Share::load( $url, 'Olhe este projeto!')->$provider());
         //return redirect(Share::load('http://www.example.com', 'Olhe este projeto!', session('socialUser')->getAvatar())->$provider());
